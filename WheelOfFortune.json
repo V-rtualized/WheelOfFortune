@@ -2,7 +2,7 @@
   "id": "WheelOfFortune",
   "name": "WheelOfFortune",
   "display_name": "Wheel Of Fortune",
-  "author": ["Virtualized", "Piton322"],
+  "author": ["Virtualized", "Piton322", "Shan_"],
   "description": "Adds random effects to Multiplayer matches",
   "prefix": "wheeloffortune",
   "main_file": "core.lua",
@@ -14,7 +14,7 @@
     "Steamodded (>=1.0.0~BETA-1221a)",
     "Lovely (>=0.8)",
     "Balatro (>=1.0.1o)",
-    "Multiplayer (>=0.3.0~DEV)"
+    "Multiplayer (>=0.3.0)"
   ],
   "conflicts": []
 }
