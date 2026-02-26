@@ -8,8 +8,22 @@ function MP.reset_game_states()
 	WOF.guest_ready_for_spin = false
 	WOF.shared_spin_sent = false
 	WOF.active_shared_effect = nil
+	WOF.active_effects = {}
+	WOF.flags = {}
 	G.after_pvp = nil
 	reset_game_states_ref()
+end
+
+local ease_ante_ref = ease_ante
+function ease_ante(mod)
+	for i = #WOF.active_effects, 1, -1 do
+		local effect = WOF.Effects[WOF.active_effects[i]]
+		if effect and effect.removal_mode == "end_ante" then
+			effect:on_remove()
+			table.remove(WOF.active_effects, i)
+		end
+	end
+	ease_ante_ref(mod)
 end
 
 local evaluate_round_ref = G.FUNCS.evaluate_round

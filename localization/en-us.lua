@@ -16,6 +16,22 @@ return {
                     "are {C:attention}destroyed",
                 },
             },
+            j_wheeloffortune_shop_inflation = {
+                name = "Shop Inflation",
+                text={
+                    "All shop cards cost",
+                    "{C:attention}X#1#{} more",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
+            j_wheeloffortune_ouija_funboy = {
+                name = "Ouija Funboy",
+                text={
+                    "All {C:spectral}Spectral{} cards",
+                    "are {C:attention}Ouija",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
         }
     }
 }

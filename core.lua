@@ -12,6 +12,8 @@ WOF.needs_shared_spin = false
 WOF.guest_ready_for_spin = false
 WOF.shared_spin_sent = false
 WOF.active_shared_effect = nil
+WOF.flags = {}
+WOF.active_effects = {}
 
 function WOF.load_file(file)
 	local chunk, err = SMODS.load_file(file, WOF.id)

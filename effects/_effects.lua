@@ -1,5 +1,39 @@
 WOF.Effects = {}
 
+function WOF.default_on_add(self)
+	if self.flag then
+		WOF.flags[self.flag] = true
+	end
+	if self.joker_key then
+		for _, card in ipairs(G.jokers.cards) do
+			if card.config.center_key == self.joker_key then return end
+		end
+		local card = create_card("Joker", G.jokers, false, nil, nil, nil, self.joker_key)
+		card.ability.eternal = true
+		card:set_edition("e_negative")
+		card.ability.extra_value = -2
+		card:set_cost()
+		card:add_to_deck()
+		G.jokers:emplace(card)
+	end
+end
+
+function WOF.default_on_remove(self)
+	if self.flag then
+		WOF.flags[self.flag] = false
+	end
+	if self.joker_key then
+		for i = #G.jokers.cards, 1, -1 do
+			if G.jokers.cards[i].config.center_key == self.joker_key then
+				local card = G.jokers.cards[i]
+				card.ability.eternal = false
+				card:start_dissolve()
+				break
+			end
+		end
+	end
+end
+
 WOF.Effect = SMODS.GameObject:extend({
 	obj_table = {},
 	obj_buffer = {},
@@ -10,29 +44,9 @@ WOF.Effect = SMODS.GameObject:extend({
 	class_prefix = "wof_effect",
 	is_shared = false,
 	min_ante = 0,
-	on_add = function(self)
-		if self.joker_key then
-			local card = create_card("Joker", G.jokers, false, nil, nil, nil, self.joker_key)
-			card.ability.eternal = true
-			card:set_edition("e_negative")
-			card.ability.extra_value = -2
-			card:set_cost()
-			card:add_to_deck()
-			G.jokers:emplace(card)
-		end
-	end,
-	on_remove = function(self)
-		if self.joker_key then
-			for i = #G.jokers.cards, 1, -1 do
-				if G.jokers.cards[i].config.center_key == self.joker_key then
-					local card = G.jokers.cards[i]
-					card.ability.eternal = false
-					card:start_dissolve()
-					break
-				end
-			end
-		end
-	end,
+	removal_mode = "manual",
+	on_add = WOF.default_on_add,
+	on_remove = WOF.default_on_remove,
 	inject = function(self)
 		WOF.Effects[self.key] = self
 	end,
@@ -65,4 +79,8 @@ function WOF.show_effect(effect)
 	})
 
 	effect:on_add()
+
+	if effect.removal_mode == "end_ante" then
+		table.insert(WOF.active_effects, effect.key)
+	end
 end
