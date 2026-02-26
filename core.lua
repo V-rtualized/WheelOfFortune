@@ -1,8 +1,8 @@
 WOF = SMODS.current_mod
 
-WOF.SPIN_COST_BASE = 5
+WOF.SPIN_COST_BASE = 3
 function WOF.spin_cost()
-	return WOF.SPIN_COST_BASE * (G.GAME.round_resets.ante or 1)
+	return math.min(WOF.SPIN_COST_BASE * (G.GAME.round_resets.ante or 1), 15)
 end
 WOF.wheel_spun_this_shop = false
 WOF.awaiting_shared_spin = false
