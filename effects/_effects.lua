@@ -27,3 +27,20 @@ function WOF.get_random_effect(shared)
 	if #eligible == 0 then return nil end
 	return eligible[math.random(#eligible)]
 end
+
+function WOF.show_effect(effect)
+	play_sound("tarot1")
+
+	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#effect.message - 18) * 0.4 / 27))
+
+	attention_text({
+		text = effect.message,
+		scale = msg_scale,
+		hold = 8,
+		align = "cm",
+		major = G.play,
+		backdrop_colour = G.C.GOLD,
+	})
+
+	effect:calculate()
+end

@@ -16,12 +16,17 @@ end
 local shop_ref = G.UIDEF.shop
 function G.UIDEF.shop()
 	WOF.wheel_spun_this_shop = false
+	WOF.shared_spin_done_this_round = false
+	WOF.awaiting_shared_spin = false
+	WOF.shared_spin_complete = false
+	WOF.guest_ready_for_spin = false
+	WOF.shared_spin_sent = false
 
 	local t = shop_ref()
 
 	local button_column = find_parent_by_child_id(t, "next_round_button")
 
-	if button_column then
+	if button_column and MP and MP.LOBBY and MP.LOBBY.code then
 		-- Shrink the existing Next Round and Reroll buttons to fit all 3
 		for _, node in ipairs(button_column.nodes) do
 			if node.config and node.config.minh then
@@ -112,18 +117,5 @@ G.FUNCS.wof_spin_wheel = function(e)
 
 	WOF.wheel_spun_this_shop = true
 	ease_dollars(-WOF.spin_cost())
-	play_sound("tarot1")
-
-	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#effect.message - 18) * 0.4 / 27))
-
-	attention_text({
-		text = effect.message,
-		scale = msg_scale,
-		hold = 8,
-		align = "cm",
-		major = G.play,
-		backdrop_colour = G.C.GOLD,
-	})
-
-	effect:calculate()
+	WOF.show_effect(effect)
 end
