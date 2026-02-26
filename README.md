@@ -24,7 +24,7 @@ After every PvP blind, both players enter a shared spin phase. A waiting screen 
 The lobby info overlay has an "Effects" tab that shows the last 10 effects applied. Each entry displays:
 - The effect description
 - A **Shared** or **Personal** tag
-- An **Active** or **Inactive** status tag
+- An **Active**, **Inactive**, or **Instant** status tag
 
 ### Lobby Integration
 
