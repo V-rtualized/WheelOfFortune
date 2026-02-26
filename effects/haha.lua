@@ -1,6 +1,6 @@
 WOF.Effect({
 	key = "haha",
-	message = "Played cards are destroyed",
+	message = localize("k_wof_effect_haha"),
 	is_shared = true,
 	min_ante = 0,
 	removal_mode = "shared",

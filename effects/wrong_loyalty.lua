@@ -1,6 +1,6 @@
 WOF.Effect({
 	key = "wrong_loyalty",
-	message = "X4 on 5th hand played",
+	message = localize("k_wof_effect_wrong_loyalty"),
 	is_shared = true,
 	min_ante = 0,
 	removal_mode = "shared",

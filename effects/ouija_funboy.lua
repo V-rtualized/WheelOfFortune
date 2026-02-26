@@ -1,6 +1,6 @@
 WOF.Effect({
 	key = "ouija_funboy",
-	message = "All spectrals are Ouija",
+	message = localize("k_wof_effect_ouija_funboy"),
 	is_shared = false,
 	min_ante = 0,
 	removal_mode = "end_ante",

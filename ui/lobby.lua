@@ -17,12 +17,12 @@ function MP.UI.lobby_status_display()
 
 	if hostVersion ~= guestVersion then
 		warning = {
-			"Wheel of Fortune mismatch - both players need the same version",
+			localize("k_wof_mismatch"),
 			SMODS.Gradients.warning_text,
 		}
 	elseif hostVersion ~= nil and hostVersion == guestVersion then
 		warning = {
-			"Wheel of Fortune active",
+			localize("k_wof_active_label"),
 			G.C.GREEN,
 			0.25,
 		}
@@ -58,7 +58,7 @@ function MP.UI.lobby_info()
 						tab_definition_function = MP.UI.create_UIBox_settings,
 					},
 					{
-						label = "Effects",
+						label = localize("k_wof_effects"),
 						chosen = false,
 						tab_definition_function = WOF.create_UIBox_effect_history,
 					},

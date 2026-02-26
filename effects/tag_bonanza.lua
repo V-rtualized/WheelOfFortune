@@ -1,6 +1,6 @@
 WOF.Effect({
 	key = "tag_bonanza",
-	message = "Get a random tag",
+	message = localize("k_wof_effect_tag_bonanza"),
 	is_shared = false,
 	min_ante = 0,
 	on_add = function(self)

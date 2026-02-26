@@ -60,7 +60,7 @@ function G.UIDEF.shop()
 								{
 									n = G.UIT.T,
 									config = {
-										text = "Spin",
+										text = localize("k_wof_spin"),
 										scale = 0.4,
 										colour = G.C.WHITE,
 										shadow = true,
