@@ -1,5 +1,5 @@
 WOF.Effect({
-	key = "increase_value",
+	key = "temperance_value",
 	message = "Increase sell value of a random joker by $10",
 	is_shared = false,
 	min_ante = 0,

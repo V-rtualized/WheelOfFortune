@@ -1,5 +1,5 @@
 WOF.Effect({
-	key = "random_tag",
+	key = "tag_bonanza",
 	message = "Get a random tag",
 	is_shared = false,
 	min_ante = 0,

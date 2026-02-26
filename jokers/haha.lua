@@ -1,5 +1,5 @@
 SMODS.Joker({
-    key = "destroy_on_played",
+    key = "haha",
     atlas = "centers",
     pos = { x = 1, y = 4 },
     prefix_config = { atlas = false },

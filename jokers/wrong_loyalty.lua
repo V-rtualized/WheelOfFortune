@@ -1,5 +1,5 @@
 SMODS.Joker({
-    key = "5th_hand_xmult",
+    key = "wrong_loyalty",
     atlas = "centers",
     pos = { x = 1, y = 4 },
     prefix_config = { atlas = false },
