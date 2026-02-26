@@ -49,6 +49,7 @@ end
 
 WOF.load_dir("jokers")
 WOF.load_dir("effects")
+WOF.load_dir("compatibility")
 WOF.load_file("ui/shop.lua")
 WOF.load_file("ui/shared_spin.lua")
 WOF.load_file("ui/lobby.lua")
