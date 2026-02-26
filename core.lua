@@ -11,6 +11,7 @@ WOF.shared_spin_done_this_round = false
 WOF.needs_shared_spin = false
 WOF.guest_ready_for_spin = false
 WOF.shared_spin_sent = false
+WOF.active_shared_effect = nil
 
 function WOF.load_file(file)
 	local chunk, err = SMODS.load_file(file, WOF.id)
@@ -46,6 +47,7 @@ function WOF.load_dir(directory)
 	end
 end
 
+WOF.load_dir("jokers")
 WOF.load_dir("effects")
 WOF.load_file("ui/shop.lua")
 WOF.load_file("ui/shared_spin.lua")
@@ -76,6 +78,17 @@ if MP and MP.register_mod_action then
 			sendWarnMessage("[WOF] Unknown effect key: " .. tostring(action.effect_key), "WOF")
 			return
 		end
+
+		-- Remove the previous shared effect if one is active
+		if WOF.active_shared_effect then
+			local old_effect = WOF.Effects[WOF.active_shared_effect]
+			if old_effect then
+				old_effect:on_remove()
+			end
+		end
+
+		-- Set the new active shared effect
+		WOF.active_shared_effect = action.effect_key
 
 		-- Remove the spin UI overlay
 		if WOF.shared_spin_ui then

@@ -1,7 +1,7 @@
 {
   "id": "WheelOfFortune",
   "name": "WheelOfFortune",
-  "display_name": "WheelOfFortune",
+  "display_name": "Wheel Of Fortune",
   "author": ["Virtualized", "Piton322"],
   "description": "Adds random effects to Multiplayer matches",
   "prefix": "wheeloffortune",
