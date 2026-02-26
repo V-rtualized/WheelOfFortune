@@ -1,11 +1,21 @@
 local function create_effect_row(entry)
-	local is_active = entry.ante ~= nil and entry.ante == (G.GAME.round_resets.ante or 0)
+	local is_instant = entry.ante == nil
+	local is_active = not is_instant and entry.ante == (G.GAME.round_resets.ante or 0)
 
 	local type_colour = entry.is_shared and HEX("5B8DEF") or HEX("FFD700")
-	local type_text = entry.is_shared and "Shared" or "Personal"
+	local type_text = entry.is_shared and localize("k_wof_shared") or localize("k_wof_personal")
 
-	local status_colour = is_active and HEX("4CAF50") or G.C.L_BLACK
-	local status_text = is_active and "Active" or "Inactive"
+	local status_colour, status_text
+	if is_instant then
+		status_colour = HEX("9C27B0")
+		status_text = localize("k_wof_instant")
+	elseif is_active then
+		status_colour = HEX("4CAF50")
+		status_text = localize("k_wof_active")
+	else
+		status_colour = G.C.L_BLACK
+		status_text = localize("k_wof_inactive")
+	end
 
 	return {
 		n = G.UIT.R,
@@ -52,7 +62,7 @@ function WOF.create_UIBox_effect_history()
 					n = G.UIT.R,
 					config = { align = "cm" },
 					nodes = {
-						{ n = G.UIT.T, config = { text = "No effects yet", scale = 0.5, colour = G.C.UI.TEXT_INACTIVE } },
+						{ n = G.UIT.T, config = { text = localize("k_wof_no_effects"), scale = 0.5, colour = G.C.UI.TEXT_INACTIVE } },
 					},
 				},
 			},
