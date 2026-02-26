@@ -1,0 +1,20 @@
+{
+  "id": "WheelOfFortune",
+  "name": "WheelOfFortune",
+  "display_name": "WheelOfFortune",
+  "author": ["Virtualized", "Piton322"],
+  "description": "Adds random effects to Multiplayer matches",
+  "prefix": "wheeloffortune",
+  "main_file": "core.lua",
+  "priority": 10000001,
+  "badge_colour": "FFD700",
+  "badge_text_colour": "FFFFFF",
+  "version": "0.1.0",
+  "dependencies": [
+    "Steamodded (>=1.0.0~BETA-1221a)",
+    "Lovely (>=0.8)",
+    "Balatro (>=1.0.1o)",
+    "Multiplayer (>=0.3.0~DEV)"
+  ],
+  "conflicts": []
+}
