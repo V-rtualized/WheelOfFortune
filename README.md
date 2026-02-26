@@ -38,8 +38,8 @@ Several effects create eternal, negative jokers as visual indicators while the e
 
 | Effect | Description | Type | Duration |
 |--------|-------------|------|----------|
-| **Wrong Loyalty** | Creates a joker that gives X4 Mult every 5th hand played | Shared | Until next shared spin |
-| **Haha** | Creates a joker that destroys all played cards | Shared | Until next shared spin |
+| **Wrong Loyalty** | Creates an indicator joker that gives X4 Mult every 5th hand played | Shared | Until next shared spin |
+| **Haha** | Creates an indicator joker that destroys all played cards | Shared | Until next shared spin |
 | **Shop Inflation** | Increases all shop card prices by X(1 + 0.1 * ante). Creates an indicator joker | Personal | Until end of ante |
 | **Ouija Funboy** | Forces all Spectral cards to be generated as Ouija, even if banned by the ruleset. Creates an indicator joker | Personal | Until end of ante |
 | **Tag Bonanza** | Gives a random tag to the player | Personal | Instant |
