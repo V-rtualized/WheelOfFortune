@@ -14,6 +14,7 @@ WOF.shared_spin_sent = false
 WOF.active_shared_effect = nil
 WOF.flags = {}
 WOF.active_effects = {}
+WOF.effect_history = {}
 
 function WOF.load_file(file)
 	local chunk, err = SMODS.load_file(file, WOF.id)
@@ -54,6 +55,7 @@ WOF.load_dir("effects")
 WOF.load_dir("compatibility")
 WOF.load_file("ui/shop.lua")
 WOF.load_file("ui/shared_spin.lua")
+WOF.load_file("ui/effect_history.lua")
 WOF.load_file("ui/lobby.lua")
 WOF.load_file("overrides/game_state.lua")
 

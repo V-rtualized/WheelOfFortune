@@ -9,6 +9,7 @@ function MP.reset_game_states()
 	WOF.shared_spin_sent = false
 	WOF.active_shared_effect = nil
 	WOF.active_effects = {}
+	WOF.effect_history = {}
 	WOF.flags = {}
 	G.after_pvp = nil
 	reset_game_states_ref()

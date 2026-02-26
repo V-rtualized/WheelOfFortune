@@ -65,6 +65,19 @@ function WOF.get_random_effect(shared)
 end
 
 function WOF.show_effect(effect)
+	local entry = {
+		key = effect.key,
+		message = effect.message,
+		is_shared = effect.is_shared,
+	}
+	if effect.removal_mode == "shared" or effect.removal_mode == "end_ante" then
+		entry.ante = G.GAME.round_resets.ante or 0
+	end
+	table.insert(WOF.effect_history, 1, entry)
+	if #WOF.effect_history > 10 then
+		table.remove(WOF.effect_history)
+	end
+
 	play_sound("tarot1")
 
 	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#effect.message - 18) * 0.4 / 27))

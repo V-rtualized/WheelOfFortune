@@ -29,5 +29,9 @@ if SMODS.Mods["JokerDisplay"] and SMODS.Mods["JokerDisplay"].can_load then
 		}
 
 		jd_def["j_wheeloffortune_haha"] = {}
+
+		jd_def["j_wheeloffortune_shop_inflation"] = {}
+
+		jd_def["j_wheeloffortune_ouija_funboy"] = {}
 	end
 end
