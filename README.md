@@ -38,9 +38,9 @@ Several effects create eternal, negative jokers as visual indicators while the e
 
 | Effect | Description | Type | Duration |
 |--------|-------------|------|----------|
-| **X4 on 5th hand played** | Creates a "Wrong Loyalty" joker that gives X4 Mult every 5th hand played | Shared | Until next shared spin |
-| **Played cards are destroyed** | Creates a "Haha" joker that destroys all played cards | Shared | Until next shared spin |
-| **Shop prices inflated** | Increases all shop card prices by X(1 + 0.1 * ante). Creates a "Shop Inflation" indicator joker | Personal | Until end of ante |
-| **All spectrals are Ouija** | Forces all Spectral cards to be generated as Ouija, even if banned by the ruleset. Creates an "Ouija Funboy" indicator joker | Personal | Until end of ante |
-| **Get a random tag** | Adds a random tag to the player | Personal | Instant |
-| **Increase sell value of a random joker by $10** | Picks a random joker and adds $10 to its sell value | Personal | Instant |
+| **Wrong Loyalty** | Creates a joker that gives X4 Mult every 5th hand played | Shared | Until next shared spin |
+| **Haha** | Creates a joker that destroys all played cards | Shared | Until next shared spin |
+| **Shop Inflation** | Increases all shop card prices by X(1 + 0.1 * ante). Creates an indicator joker | Personal | Until end of ante |
+| **Ouija Funboy** | Forces all Spectral cards to be generated as Ouija, even if banned by the ruleset. Creates an indicator joker | Personal | Until end of ante |
+| **Tag Bonanza** | Gives a random tag to the player | Personal | Instant |
+| **Temperance Value** | Picks a random joker and adds $10 to its sell value | Personal | Instant |
