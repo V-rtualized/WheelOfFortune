@@ -7,6 +7,7 @@ SMODS.Joker({
     discovered = true,
     cost = 0,
     no_collection = true,
+    blueprint_compat = false,
     config = { 
         extra = {
             loyalty_remaining = 4,
@@ -28,23 +29,15 @@ SMODS.Joker({
         }
     end,
     calculate = function(self, card, context)
-       if context.cardarea == G.jokers and context.joker_main then
+       if context.cardarea == G.jokers and context.joker_main and not context.blueprint then
             card.ability.extra.loyalty_remaining = (card.ability.extra.every-1-G.GAME.hands_played)%(card.ability.extra.every+1)
-            if context.blueprint then
-                if card.ability.extra.loyalty_remaining == card.ability.extra.every then
-                    return {
-                        xmult = card.ability.extra.Xmult
-                    }
-                end
-            else
-                if card.ability.extra.loyalty_remaining == 0 then
-                    local eval = function(card) return (card.ability.extra.loyalty_remaining == 0) end
-                    juice_card_until(card, eval, true)
-                elseif card.ability.extra.loyalty_remaining == card.ability.extra.every then
-                    return {
-                        xmult = card.ability.extra.Xmult
-                    }
-                end
+            if card.ability.extra.loyalty_remaining == 0 then
+                local eval = function(card) return (card.ability.extra.loyalty_remaining == 0) end
+                juice_card_until(card, eval, true)
+            elseif card.ability.extra.loyalty_remaining == card.ability.extra.every then
+                return {
+                    xmult = card.ability.extra.Xmult
+                }
             end
        end
     end,

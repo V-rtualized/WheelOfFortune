@@ -7,8 +7,9 @@ SMODS.Joker({
     discovered = true,
     cost = 0,
     no_collection = true,
+    blueprint_compat = false,
     calculate = function(self, card, context)
-        if context.destroy_card and context.cardarea == G.play then
+        if context.destroy_card and context.cardarea == G.play and not context.blueprint then
             return {
                 remove = true
             }
