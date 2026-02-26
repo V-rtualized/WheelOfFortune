@@ -51,6 +51,7 @@ WOF.load_dir("jokers")
 WOF.load_dir("effects")
 WOF.load_file("ui/shop.lua")
 WOF.load_file("ui/shared_spin.lua")
+WOF.load_file("ui/lobby.lua")
 WOF.load_file("overrides/game_state.lua")
 
 -- Register shared spin handlers with Multiplayer mod

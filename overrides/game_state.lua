@@ -1,3 +1,17 @@
+local reset_game_states_ref = MP.reset_game_states
+function MP.reset_game_states()
+	WOF.wheel_spun_this_shop = false
+	WOF.awaiting_shared_spin = false
+	WOF.shared_spin_complete = false
+	WOF.shared_spin_done_this_round = false
+	WOF.needs_shared_spin = false
+	WOF.guest_ready_for_spin = false
+	WOF.shared_spin_sent = false
+	WOF.active_shared_effect = nil
+	G.after_pvp = nil
+	reset_game_states_ref()
+end
+
 local evaluate_round_ref = G.FUNCS.evaluate_round
 G.FUNCS.evaluate_round = function()
 	if G.after_pvp then
@@ -9,7 +23,7 @@ end
 local update_shop_ref = Game.update_shop
 
 function Game:update_shop(dt)
-	if MP and MP.LOBBY and MP.LOBBY.code and WOF.needs_shared_spin then
+	if WOF.is_active() and WOF.needs_shared_spin then
 		if not WOF.shared_spin_done_this_round then
 			if not WOF.awaiting_shared_spin then
 				WOF.awaiting_shared_spin = true

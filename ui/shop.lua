@@ -26,7 +26,7 @@ function G.UIDEF.shop()
 
 	local button_column = find_parent_by_child_id(t, "next_round_button")
 
-	if button_column and MP and MP.LOBBY and MP.LOBBY.code then
+	if button_column and WOF.is_active() then
 		-- Shrink the existing Next Round and Reroll buttons to fit all 3
 		for _, node in ipairs(button_column.nodes) do
 			if node.config and node.config.minh then
