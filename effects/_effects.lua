@@ -80,10 +80,11 @@ function WOF.show_effect(effect)
 
 	play_sound("tarot1")
 
-	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#effect.message - 18) * 0.4 / 27))
+	local msg = localize(effect.message)
+	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#msg - 18) * 0.4 / 27))
 
 	attention_text({
-		text = effect.message,
+		text = msg,
 		scale = msg_scale,
 		hold = 8,
 		align = "cm",

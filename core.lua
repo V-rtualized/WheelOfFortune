@@ -115,4 +115,27 @@ if MP and MP.register_mod_action then
 			end,
 		}))
 	end)
+
+	MP.register_mod_action("master_thief_request", function(action)
+		local eligible = {}
+		for _, card in ipairs(G.jokers.cards) do
+			local center = card.config.center
+			if center and center.rarity == 1 and not center.no_collection then
+				eligible[#eligible + 1] = card
+			end
+		end
+		local joker_key = nil
+		if #eligible > 0 then
+			joker_key = eligible[math.random(#eligible)].config.center.key
+		end
+		MP.ACTIONS.modded("WheelOfFortune", "master_thief_response", { joker_key = joker_key })
+	end)
+
+	MP.register_mod_action("master_thief_response", function(action)
+		if not action.joker_key then return end
+		if not G.shop_jokers then return end
+		local card = create_card("Joker", G.shop_jokers, false, nil, nil, nil, action.joker_key)
+		card:set_cost()
+		G.shop_jokers:emplace(card)
+	end)
 end

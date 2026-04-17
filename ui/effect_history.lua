@@ -31,7 +31,7 @@ local function create_effect_row(entry)
 				n = G.UIT.C,
 				config = { align = "cl", padding = 0.05, minw = 5, maxw = 5 },
 				nodes = {
-					{ n = G.UIT.T, config = { text = entry.message, scale = 0.35, colour = G.C.UI.TEXT_LIGHT } },
+					{ n = G.UIT.T, config = { text = localize(entry.message), scale = 0.35, colour = G.C.UI.TEXT_LIGHT } },
 				},
 			},
 			{

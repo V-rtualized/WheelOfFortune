@@ -32,6 +32,30 @@ return {
                     "{C:inactive}(Destroyed next ante)",
                 },
             },
+            j_wheeloffortune_double_draw = {
+                name = "Double Draw",
+                text = {
+                    "{C:attention}+3{} hand size",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
+            j_wheeloffortune_lucky_streak = {
+                name = "Lucky Streak",
+                text = {
+                    "{C:green}#1# in #2#{} chance each",
+                    "hand is played {C:attention}again{}",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
+            j_wheeloffortune_we_are_rich = {
+                name = "We Are Rich",
+                text = {
+                    "Each {C:attention}Economy{} Joker",
+                    "gives {C:money}+$#1#{} at end",
+                    "of round",
+                    "{C:inactive}(Currently {C:money}+$#2#{C:inactive})",
+                },
+            },
         },
     },
     misc = {
@@ -52,6 +76,17 @@ return {
             k_wof_effect_ouija_funboy = "All spectrals are Ouija",
             k_wof_effect_tag_bonanza = "Get a random tag",
             k_wof_effect_temperance_value = "Increase sell value of a random joker by $10",
+            k_wof_effect_pack_insight = "Get a random tarot or buffoon pack",
+            k_wof_effect_double_draw = "Draw 3 extra cards this ante",
+            k_wof_effect_shop_upgrade = "Shop gains 2 extra card slots",
+            k_wof_effect_legendary_comeback = "The Soul hidden among next 50 tarots",
+            k_wof_effect_rare_snowball = "Rare jokers twice as likely this ante",
+            k_wof_effect_indigo_blessing = "+1 card selectable from all packs this ante",
+            k_wof_effect_lucky_streak = "1 in 10 chance to replay hand this ante",
+            k_wof_lucky_streak_trigger = "Lucky Streak!",
+            k_wof_effect_training_weights = "All +Mult and +Chips jokers doubled",
+            k_wof_effect_we_are_rich = "Economy jokers give +$1 per round this ante",
+            k_wof_effect_master_thief = "Opponent's common joker appears in your shop",
         },
     },
 }

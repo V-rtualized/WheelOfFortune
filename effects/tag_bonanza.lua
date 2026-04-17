@@ -1,6 +1,6 @@
 WOF.Effect({
 	key = "tag_bonanza",
-	message = localize("k_wof_effect_tag_bonanza"),
+	message = "k_wof_effect_tag_bonanza",
 	is_shared = false,
 	min_ante = 0,
 	on_add = function(self)

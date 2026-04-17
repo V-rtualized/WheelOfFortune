@@ -10,7 +10,7 @@ end
 
 WOF.Effect({
 	key = "shop_inflation",
-	message = localize("k_wof_effect_shop_inflation"),
+	message = "k_wof_effect_shop_inflation",
 	is_shared = false,
 	min_ante = 0,
 	removal_mode = "end_ante",

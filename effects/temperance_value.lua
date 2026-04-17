@@ -1,6 +1,6 @@
 WOF.Effect({
 	key = "temperance_value",
-	message = localize("k_wof_effect_temperance_value"),
+	message = "k_wof_effect_temperance_value",
 	is_shared = false,
 	min_ante = 0,
 	on_add = function(self)
