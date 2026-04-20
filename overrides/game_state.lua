@@ -11,6 +11,8 @@ function MP.reset_game_states()
 	WOF.active_effects = {}
 	WOF.effect_history = {}
 	WOF.flags = {}
+	WOF.find_me_round = { id = nil, label = nil }
+	WOF.lucky_day_converted = nil
 	G.after_pvp = nil
 	reset_game_states_ref()
 end
@@ -25,6 +27,7 @@ function ease_ante(mod)
 		end
 	end
 	ease_ante_ref(mod)
+	WOF.economic_boom_ante_start = WOF.economic_boom_total_spent
 end
 
 local evaluate_round_ref = G.FUNCS.evaluate_round

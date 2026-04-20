@@ -56,6 +56,38 @@ return {
                     "{C:inactive}(Currently {C:money}+$#2#{C:inactive})",
                 },
             },
+            j_wheeloffortune_find_me = {
+                name = "Find Me",
+                text = {
+                    "Scored {C:attention}#1#{} cards",
+                    "are retriggered",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
+            j_wheeloffortune_mosaic = {
+                name = "Mosaic",
+                text = {
+                    "{C:#1#}#2#{} cards: {C:mult}+10 Mult",
+                    "Other suits: {C:mult}-5 Mult",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
+            j_wheeloffortune_evolution = {
+                name = "Evolution",
+                text = {
+                    "Played cards permanently",
+                    "gain {C:attention}+1 Rank",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
+            j_wheeloffortune_vampire_dream = {
+                name = "Vampire Dream",
+                text = {
+                    "Played cards gain a",
+                    "{C:attention}random Enhancement",
+                    "{C:inactive}(Destroyed next ante)",
+                },
+            },
         },
     },
     misc = {
@@ -87,6 +119,18 @@ return {
             k_wof_effect_training_weights = "All +Mult and +Chips jokers doubled",
             k_wof_effect_we_are_rich = "Economy jokers give +$1 per round this ante",
             k_wof_effect_master_thief = "Opponent's common joker appears in your shop",
+            k_wof_effect_economic_boom = "Receive 10% of spent money at ante end",
+            k_wof_effect_find_me = "One rank is retriggered when scored",
+            k_wof_effect_mosaic = "One suit +10 Mult, others -5 Mult",
+            k_wof_effect_evolution = "Played cards permanently gain +1 rank",
+            k_wof_effect_vampire_dream = "Played cards gain random enhancements",
+            k_wof_effect_gambler_shuffle = "A deck card replaced with an enhanced card",
+            k_wof_effect_lucky_day = "All 7s become Lucky 7s with double odds",
+            k_wof_effect_parasite = "A random common joker becomes Perishable",
+            k_wof_effect_rents_due = "A random joker becomes Rental",
+            k_wof_effect_foil_factory = "Next 5 shop jokers are given Foil",
+            k_wof_effect_mirage = "Legendary negative Perishable joker in next shop",
+            k_wof_effect_phantom_pain = "Random joker sold for $20, 50% chance to reappear",
         },
     },
 }
