@@ -55,7 +55,7 @@ WOF.Effect = SMODS.GameObject:extend({
 })
 
 WOF.enabled_effects = {
-	resource_drain = true,
+	boss_interference = true,
 }
 
 function WOF.get_random_effect(shared)
