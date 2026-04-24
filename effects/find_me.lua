@@ -20,6 +20,13 @@ WOF.pick_find_me_rank = function()
 	WOF.find_me_round.label = card.base.value
 end
 
+-- Called by SMODS at end of each round (reset_deck=false) and run start (reset_deck=true)
+WOF.reset_game_globals = function(reset_deck)
+	if not reset_deck and WOF.flags.find_me then
+		WOF.pick_find_me_rank()
+	end
+end
+
 WOF.Effect({
 	key = "find_me",
 	message = "k_wof_effect_find_me",

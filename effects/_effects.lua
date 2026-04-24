@@ -6,7 +6,9 @@ function WOF.default_on_add(self)
 	end
 	if self.joker_key then
 		for _, card in ipairs(G.jokers.cards) do
-			if card.config.center_key == self.joker_key then return end
+			if card.config.center_key == self.joker_key then
+				return
+			end
 		end
 		local card = create_card("Joker", G.jokers, false, nil, nil, nil, self.joker_key)
 		card.ability.eternal = true
@@ -52,34 +54,37 @@ WOF.Effect = SMODS.GameObject:extend({
 	end,
 })
 
--- Set to a table of effect keys to restrict the pool (nil = all effects enabled)
 WOF.enabled_effects = {
 	blinds = true,
-	blissful_ignorance = true,
 	boss_interference = true,
-	dicarderito = true,
-	experience_exchange = true,
 	find_me = true,
 	royal_glass = true,
 	shop_taxes = true,
-	tea_break = true,
+	resource_drain = true,
+	double_or_nothing = true,
+	doing_nothing = true,
 }
 
 function WOF.get_random_effect(shared)
 	local eligible = {}
 	local current_ante = G.GAME.round_resets.ante or 0
 	for _, effect in pairs(WOF.Effects) do
-		if effect.is_shared == shared and current_ante >= effect.min_ante
-		   and (WOF.enabled_effects == nil or WOF.enabled_effects[effect.original_key or effect.key]) then
+		if
+			effect.is_shared == shared
+			and current_ante >= effect.min_ante
+			and (WOF.enabled_effects == nil or WOF.enabled_effects[effect.original_key or effect.key])
+		then
 			eligible[#eligible + 1] = effect
 		end
 	end
-	if #eligible == 0 then return nil end
+	if #eligible == 0 then
+		return nil
+	end
 	return eligible[math.random(#eligible)]
 end
 
 function WOF.show_effect(effect)
-	local msg = type(effect.message) == 'function' and effect.message() or localize(effect.message)
+	local msg = type(effect.message) == "function" and effect.message() or localize(effect.message)
 	local entry = {
 		key = effect.key,
 		message = msg,

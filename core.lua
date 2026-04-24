@@ -57,6 +57,7 @@ WOF.load_file("ui/shop.lua")
 WOF.load_file("ui/shared_spin.lua")
 WOF.load_file("ui/effect_history.lua")
 WOF.load_file("ui/lobby.lua")
+WOF.load_file("ui/double_or_nothing.lua")
 WOF.load_file("overrides/game_state.lua")
 
 -- Register shared spin handlers with Multiplayer mod
