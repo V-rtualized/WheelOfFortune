@@ -13,7 +13,10 @@ SMODS.Joker({
 		return { vars = { rank_label } }
 	end,
 	calculate = function(self, card, context)
-		if context.repetition_only and context.cardarea == G.play
+		if context.setting_blind and WOF.flags.find_me and not context.blueprint then
+			WOF.pick_find_me_rank()
+		end
+		if context.repetition and context.cardarea == G.play
 		   and WOF.flags.find_me and not context.blueprint
 		   and context.other_card:get_id() == (WOF.find_me_round.id or -1) then
 			return {

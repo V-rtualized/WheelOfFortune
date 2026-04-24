@@ -21,9 +21,9 @@ SMODS.Joker({
 		if context.individual and context.cardarea == G.play
 		   and WOF.flags.mosaic and not context.blueprint then
 			if context.other_card:is_suit(WOF.mosaic_suit or '') then
-				return { mult = 10, card = self }
+				return { mult = 10, card = context.other_card }
 			else
-				return { mult = -5, card = self }
+				return { mult = -5, card = context.other_card }
 			end
 		end
 	end,

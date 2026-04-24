@@ -13,9 +13,17 @@ SMODS.Joker({
 	no_collection = true,
 	blueprint_compat = false,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play and not context.blueprint then
-			local key = ENHANCEMENTS[math.random(#ENHANCEMENTS)]
-			context.other_card:set_ability(G.P_CENTERS[key], nil, true)
+		if context.cardarea == G.jokers and context.before and not context.blueprint then
+			for _, v in ipairs(context.scoring_hand) do
+				if not v.debuff then
+					local key = ENHANCEMENTS[math.random(#ENHANCEMENTS)]
+					v:set_ability(G.P_CENTERS[key], nil, true)
+					G.E_MANAGER:add_event(Event({ func = function()
+						v:juice_up()
+						return true
+					end }))
+				end
+			end
 		end
 	end,
 	in_pool = function(self, args)

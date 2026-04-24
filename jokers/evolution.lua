@@ -19,25 +19,19 @@ SMODS.Joker({
 	no_collection = true,
 	blueprint_compat = false,
 	calculate = function(self, card, context)
-		if context.after and not context.blueprint then
-			local cards_to_evolve = {}
-			for _, c in ipairs(G.play.cards) do
+		if context.cardarea == G.jokers and context.before and not context.blueprint then
+			for _, c in ipairs(context.full_hand) do
 				if c.ability.effect ~= 'Stone Card' and not SMODS.has_no_rank(c) then
-					cards_to_evolve[#cards_to_evolve + 1] = c
-				end
-			end
-			if #cards_to_evolve > 0 then
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						for _, c in ipairs(cards_to_evolve) do
-							local suit_prefix = string.sub(c.base.suit, 1, 1) .. '_'
-							local suffix = rank_suffix(c.base.id)
-							c:set_base(G.P_CARDS[suit_prefix .. suffix])
+					local suit_prefix = string.sub(c.base.suit, 1, 1) .. '_'
+					local suffix = rank_suffix(c.base.id)
+					c:set_base(G.P_CARDS[suit_prefix .. suffix])
+					G.E_MANAGER:add_event(Event({
+						func = function()
 							c:juice_up(0.3, 0.3)
-						end
-						return true
-					end,
-				}))
+							return true
+						end,
+					}))
+				end
 			end
 		end
 	end,

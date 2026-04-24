@@ -1,6 +1,6 @@
 WOF.find_me_round = { id = nil, label = nil }
 
-local function pick_find_me_rank()
+WOF.pick_find_me_rank = function()
 	local valid = {}
 	for _, v in ipairs(G.playing_cards) do
 		if v.ability.effect ~= 'Stone Card' and not SMODS.has_no_rank(v) then
@@ -20,12 +20,6 @@ local function pick_find_me_rank()
 	WOF.find_me_round.label = card.base.value
 end
 
-WOF.reset_game_globals = function(reset_deck)
-	if not reset_deck and WOF.flags.find_me then
-		pick_find_me_rank()
-	end
-end
-
 WOF.Effect({
 	key = "find_me",
 	message = "k_wof_effect_find_me",
@@ -35,6 +29,6 @@ WOF.Effect({
 	joker_key = "j_wheeloffortune_find_me",
 	on_add = function(self)
 		WOF.default_on_add(self)
-		pick_find_me_rank()
+		WOF.pick_find_me_rank()
 	end,
 }):inject()

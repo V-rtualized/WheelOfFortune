@@ -52,11 +52,25 @@ WOF.Effect = SMODS.GameObject:extend({
 	end,
 })
 
+-- Set to a table of effect keys to restrict the pool (nil = all effects enabled)
+WOF.enabled_effects = {
+	blinds = true,
+	blissful_ignorance = true,
+	boss_interference = true,
+	dicarderito = true,
+	experience_exchange = true,
+	find_me = true,
+	royal_glass = true,
+	shop_taxes = true,
+	tea_break = true,
+}
+
 function WOF.get_random_effect(shared)
 	local eligible = {}
 	local current_ante = G.GAME.round_resets.ante or 0
 	for _, effect in pairs(WOF.Effects) do
-		if effect.is_shared == shared and current_ante >= effect.min_ante then
+		if effect.is_shared == shared and current_ante >= effect.min_ante
+		   and (WOF.enabled_effects == nil or WOF.enabled_effects[effect.original_key or effect.key]) then
 			eligible[#eligible + 1] = effect
 		end
 	end
@@ -65,9 +79,10 @@ function WOF.get_random_effect(shared)
 end
 
 function WOF.show_effect(effect)
+	local msg = type(effect.message) == 'function' and effect.message() or localize(effect.message)
 	local entry = {
 		key = effect.key,
-		message = effect.message,
+		message = msg,
 		is_shared = effect.is_shared,
 	}
 	if effect.removal_mode == "shared" or effect.removal_mode == "end_ante" then
@@ -80,7 +95,6 @@ function WOF.show_effect(effect)
 
 	play_sound("tarot1")
 
-	local msg = localize(effect.message)
 	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#msg - 18) * 0.4 / 27))
 
 	attention_text({

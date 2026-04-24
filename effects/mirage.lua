@@ -31,6 +31,7 @@ function CardArea:emplace(card, ...)
 			end
 			new_card:set_cost()
 			G.shop_jokers:emplace(new_card)
+			create_shop_card_ui(new_card, 'Joker', G.shop_jokers)
 			return true
 		end }))
 	end

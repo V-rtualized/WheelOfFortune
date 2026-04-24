@@ -137,5 +137,56 @@ if MP and MP.register_mod_action then
 		local card = create_card("Joker", G.shop_jokers, false, nil, nil, nil, action.joker_key)
 		card:set_cost()
 		G.shop_jokers:emplace(card)
+		create_shop_card_ui(card, 'Joker', G.shop_jokers)
+	end)
+
+	MP.register_mod_action("switcheroo_request", function(action)
+		local my_tarots = {}
+		for _, card in ipairs(G.consumeables.cards) do
+			if card.ability.set == "Tarot" then
+				my_tarots[#my_tarots + 1] = card:save()
+			end
+		end
+		local encoded = MP.UTILS.str_pack_and_encode(my_tarots)
+		local their_tarots, err = MP.UTILS.str_decode_and_unpack(action.tarots)
+		if not their_tarots then
+			sendWarnMessage("[WOF] switcheroo_request decode failed: " .. tostring(err), "WOF")
+			return
+		end
+		for i = #G.consumeables.cards, 1, -1 do
+			if G.consumeables.cards[i].ability.set == "Tarot" then
+				G.consumeables.cards[i]:start_dissolve()
+			end
+		end
+		G.E_MANAGER:add_event(Event({ func = function()
+			for _, saved in ipairs(their_tarots) do
+				local card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
+				card:load(saved)
+				G.consumeables:emplace(card)
+			end
+			return true
+		end }))
+		MP.ACTIONS.modded("WheelOfFortune", "switcheroo_response", { tarots = encoded })
+	end)
+
+	MP.register_mod_action("switcheroo_response", function(action)
+		local their_tarots, err = MP.UTILS.str_decode_and_unpack(action.tarots)
+		if not their_tarots then
+			sendWarnMessage("[WOF] switcheroo_response decode failed: " .. tostring(err), "WOF")
+			return
+		end
+		for i = #G.consumeables.cards, 1, -1 do
+			if G.consumeables.cards[i].ability.set == "Tarot" then
+				G.consumeables.cards[i]:start_dissolve()
+			end
+		end
+		G.E_MANAGER:add_event(Event({ func = function()
+			for _, saved in ipairs(their_tarots) do
+				local card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
+				card:load(saved)
+				G.consumeables:emplace(card)
+			end
+			return true
+		end }))
 	end)
 end
