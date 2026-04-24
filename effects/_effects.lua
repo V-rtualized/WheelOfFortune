@@ -55,7 +55,6 @@ WOF.Effect = SMODS.GameObject:extend({
 })
 
 WOF.enabled_effects = {
-	boss_interference = true,
 	resource_drain = true,
 }
 
