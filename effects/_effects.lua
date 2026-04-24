@@ -55,14 +55,8 @@ WOF.Effect = SMODS.GameObject:extend({
 })
 
 WOF.enabled_effects = {
-	blinds = true,
 	boss_interference = true,
-	find_me = true,
-	royal_glass = true,
-	shop_taxes = true,
 	resource_drain = true,
-	double_or_nothing = true,
-	doing_nothing = true,
 }
 
 function WOF.get_random_effect(shared)

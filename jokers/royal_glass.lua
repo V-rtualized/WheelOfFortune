@@ -22,7 +22,14 @@ SMODS.Joker({
 				if royal then
 					G.E_MANAGER:add_event(Event({
 						func = function()
-							local tarot = create_card("Tarot", G.consumeables, nil, nil, nil, nil, "c_justice")
+							local center = G.P_CENTERS["c_justice"]
+							local tarot = Card(
+								G.consumeables.T.x + G.consumeables.T.w / 2,
+								G.consumeables.T.y,
+								G.CARD_W, G.CARD_H, nil, center,
+								{ bypass_discovery_center = true, bypass_discovery_ui = true, discover = true }
+							)
+							tarot:start_materialize()
 							tarot:add_to_deck()
 							G.consumeables:emplace(tarot)
 							card_eval_status_text(card, "extra", nil, nil, nil, {

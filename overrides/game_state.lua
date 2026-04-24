@@ -24,6 +24,8 @@ function MP.reset_game_states()
 	WOF.suit_mastery_suit = nil
 	WOF.tea_break_end_time = nil
 	WOF.shop_taxes_count = 0
+	WOF.shop_taxes_zero_hands = false
+	WOF.shop_taxes_force_loss = false
 	WOF.resource_drain_hands_saved = nil
 	WOF.resource_drain_discards_saved = nil
 	WOF.phantom_pain_saved_card = nil
@@ -48,10 +50,29 @@ function ease_ante(mod)
 	WOF.economic_boom_ante_start = WOF.economic_boom_total_spent
 end
 
+local update_selecting_hand_wof_ref = Game.update_selecting_hand
+function Game:update_selecting_hand(dt)
+	if WOF.shop_taxes_zero_hands and MP.LOBBY.code and not MP.is_pvp_boss() then
+		WOF.shop_taxes_zero_hands = false
+		WOF.shop_taxes_force_loss = true
+		G.STATE = G.STATES.NEW_ROUND
+		G.STATE_COMPLETE = false
+		return
+	end
+	update_selecting_hand_wof_ref(self, dt)
+end
+
 -- update_new_round is where the MP mod checks chips vs blind.chips and calls fail_round.
 -- For Blinds! we intercept here first to flip the result before the MP check runs.
 local update_new_round_ref = Game.update_new_round
 function Game:update_new_round(dt)
+	if WOF.shop_taxes_force_loss and MP.LOBBY.code and not MP.is_pvp_boss() then
+		WOF.shop_taxes_force_loss = false
+		G.GAME.blind.chips = -1
+		MP.ACTIONS.fail_round(1)
+		update_new_round_ref(self, dt)
+		return
+	end
 	if WOF.flags.blinds_inverted and G.GAME and G.GAME.blind
 	   and not MP.is_pvp_boss() and (G.GAME.blind.chips or 0) >= 0 then
 		local chips = G.GAME.chips
