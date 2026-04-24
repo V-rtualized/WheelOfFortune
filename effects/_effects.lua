@@ -54,19 +54,11 @@ WOF.Effect = SMODS.GameObject:extend({
 	end,
 })
 
-WOF.enabled_effects = {
-	boss_interference = true,
-}
-
 function WOF.get_random_effect(shared)
 	local eligible = {}
 	local current_ante = G.GAME.round_resets.ante or 0
 	for _, effect in pairs(WOF.Effects) do
-		if
-			effect.is_shared == shared
-			and current_ante >= effect.min_ante
-			and (WOF.enabled_effects == nil or WOF.enabled_effects[effect.original_key or effect.key])
-		then
+		if effect.is_shared == shared and current_ante >= effect.min_ante then
 			eligible[#eligible + 1] = effect
 		end
 	end
