@@ -15,6 +15,8 @@ WOF.Effect({
 			end)
 			if ok and source then
 				WOF.tea_break_audio = source
+				local vol = (G.SETTINGS.SOUND.volume / 100.0) * (G.SETTINGS.SOUND.game_sounds_volume / 100.0)
+				WOF.tea_break_audio:setVolume(vol)
 				WOF.tea_break_audio:play()
 			end
 		end
