@@ -28,12 +28,22 @@ function Card:use_consumeable(area, copier)
 		end
 		use_consumeable_ref(self, area, copier)
 		local hand_type = self.ability.consumeable and self.ability.consumeable.hand_type
+		local center = self.config.center
 		if hand_type then
 			G.E_MANAGER:add_event(Event({
 				trigger = "after",
 				delay = 0.4,
 				func = function()
 					level_up_hand(self, hand_type)
+					return true
+				end,
+			}))
+		elseif center.use and type(center.use) == "function" then
+			G.E_MANAGER:add_event(Event({
+				trigger = "after",
+				delay = 0.4,
+				func = function()
+					center:use(self, area, copier)
 					return true
 				end,
 			}))
