@@ -12,7 +12,7 @@ return {
 			j_wheeloffortune_haha = {
 				name = "Haha",
 				text = {
-					"Played cards",
+					"Scored cards",
 					"are {C:attention}destroyed",
 				},
 			},
@@ -198,7 +198,7 @@ return {
 			k_wof_active_label = "Wheel of Fortune active",
 			k_wof_mismatch = "Wheel of Fortune mismatch - both players need the same version",
 			k_wof_effect_wrong_loyalty = "X4 on 5th hand played",
-			k_wof_effect_haha = "Played cards are destroyed",
+			k_wof_effect_haha = "Scored cards are destroyed",
 			k_wof_effect_shop_inflation = "Shop prices inflated",
 			k_wof_effect_ouija_funboy = "All spectrals are Ouija",
 			k_wof_effect_tag_bonanza = "Get a random tag",

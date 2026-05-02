@@ -1,6 +1,6 @@
 local reset_game_states_ref = MP.reset_game_states
 function MP.reset_game_states()
-	WOF.wheel_spun_this_shop = false
+	WOF.wheel_spin_count = 0
 	WOF.awaiting_shared_spin = false
 	WOF.shared_spin_complete = false
 	WOF.shared_spin_done_this_round = false
@@ -16,6 +16,7 @@ function MP.reset_game_states()
 	G.after_pvp = nil
 	WOF.cards_are_tired_debuffed = nil
 	WOF.dementia_decrements = nil
+	WOF.dementia_blinds_remaining = nil
 
 	WOF.doing_nothing_triggered = false
 	local dn = WOF.Effects.doing_nothing

@@ -11,7 +11,7 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if
 			context.destroy_card
-			and (context.cardarea == G.play or context.cardarea == "unscored")
+			and context.cardarea == G.play
 			and not context.blueprint
 		then
 			return {

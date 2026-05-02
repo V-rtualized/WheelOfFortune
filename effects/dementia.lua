@@ -1,14 +1,16 @@
 WOF.dementia_decrements = nil
+WOF.dementia_blinds_remaining = nil
 
 WOF.Effect({
 	key = "dementia",
 	message = "k_wof_effect_dementia",
 	is_shared = false,
-	removal_mode = "end_ante",
+	removal_mode = "manual",
 	flag = "dementia",
 	joker_key = "j_wheeloffortune_dementia",
 	on_add = function(self)
 		WOF.default_on_add(self)
+		WOF.dementia_blinds_remaining = 2
 		WOF.dementia_decrements = {}
 		G.E_MANAGER:add_event(Event({
 			func = function()
@@ -25,6 +27,7 @@ WOF.Effect({
 	end,
 	on_remove = function(self)
 		WOF.default_on_remove(self)
+		WOF.dementia_blinds_remaining = nil
 		if WOF.dementia_decrements then
 			for name, dec in pairs(WOF.dementia_decrements) do
 				if G.GAME.hands[name] then
@@ -35,3 +38,14 @@ WOF.Effect({
 		end
 	end,
 }):inject()
+
+local evaluate_round_dementia_ref = G.FUNCS.evaluate_round
+G.FUNCS.evaluate_round = function()
+	if WOF.flags.dementia and not MP.is_pvp_boss() then
+		WOF.dementia_blinds_remaining = (WOF.dementia_blinds_remaining or 1) - 1
+		if WOF.dementia_blinds_remaining <= 0 then
+			WOF.Effects.dementia:on_remove()
+		end
+	end
+	evaluate_round_dementia_ref()
+end

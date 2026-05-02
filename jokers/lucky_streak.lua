@@ -8,7 +8,7 @@ SMODS.Joker({
 	cost = 0,
 	no_collection = true,
 	blueprint_compat = false,
-	config = { extra = { numerator = 1, denominator = 10 } },
+	config = { extra = { numerator = 1, denominator = 5 } },
 	loc_vars = function(self, info_queue, card)
 		local num, denom =
 			SMODS.get_probability_vars(card, card.ability.extra.numerator, card.ability.extra.denominator)

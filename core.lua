@@ -1,10 +1,13 @@
 WOF = SMODS.current_mod
 
-WOF.SPIN_COST_BASE = 3
 function WOF.spin_cost()
-	return math.min(WOF.SPIN_COST_BASE * (G.GAME.round_resets.ante or 1), 15)
+	return math.min(2 + (G.GAME.round_resets.ante or 1), 8)
 end
-WOF.wheel_spun_this_shop = false
+function WOF.second_spin_cost()
+	return math.min(WOF.spin_cost() + 2, 10)
+end
+WOF.wheel_spin_count = 0
+WOF.spin_cost_display = "3"
 WOF.awaiting_shared_spin = false
 WOF.shared_spin_complete = false
 WOF.shared_spin_done_this_round = false
