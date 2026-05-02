@@ -209,7 +209,7 @@ return {
 			k_wof_effect_legendary_comeback = "The Soul hidden among next 50 tarots",
 			k_wof_effect_rare_snowball = "Rare jokers twice as likely this ante",
 			k_wof_effect_indigo_blessing = "+1 card selectable from all packs this ante",
-			k_wof_effect_lucky_streak = "1 in 10 chance to replay hand this ante",
+			k_wof_effect_lucky_streak = "1 in 5 chance to replay hand this ante",
 			k_wof_lucky_streak_trigger = "Lucky Streak!",
 			k_wof_effect_training_weights = "All +Mult and +Chips jokers doubled",
 			k_wof_effect_we_are_rich = "Economy jokers give +$1 per round this ante",
