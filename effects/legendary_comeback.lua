@@ -15,7 +15,8 @@ WOF.Effect({
 
 local create_card_ref = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
-	if WOF.flags.legendary_comeback_target
+	if
+		WOF.flags.legendary_comeback_target
 		and (_type == "Spectral" or _type == "Tarot" or _type == "Tarot_Planet")
 		and not forced_key
 	then
@@ -27,7 +28,8 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 				G.GAME.banned_keys["c_soul"] = nil
 				unbanned = true
 			end
-			local card = create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
+			local card =
+				create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 			if unbanned then
 				G.GAME.banned_keys["c_soul"] = true
 			end

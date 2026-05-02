@@ -10,16 +10,18 @@ WOF.Effect({
 	on_add = function(self)
 		WOF.default_on_add(self)
 		WOF.dementia_decrements = {}
-		G.E_MANAGER:add_event(Event({ func = function()
-			for name, hand in pairs(G.GAME.hands) do
-				local decrement = hand.level
-				if decrement > 0 then
-					WOF.dementia_decrements[name] = decrement
-					level_up_hand(G.deck.cards[1], name, true, -decrement)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				for name, hand in pairs(G.GAME.hands) do
+					local decrement = hand.level
+					if decrement > 0 then
+						WOF.dementia_decrements[name] = decrement
+						level_up_hand(G.deck.cards[1], name, true, -decrement)
+					end
 				end
-			end
-			return true
-		end }))
+				return true
+			end,
+		}))
 	end,
 	on_remove = function(self)
 		WOF.default_on_remove(self)

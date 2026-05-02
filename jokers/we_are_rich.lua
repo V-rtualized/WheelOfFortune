@@ -1,18 +1,22 @@
 -- End-of-round payout jokers handled via calc_dollar_bonus
 local END_OF_ROUND_ECONOMY_JOKERS = {
-	j_golden       = true,
-	j_rocket       = true,
-	j_cloud_9      = true,
-	j_satellite    = true,
+	j_golden = true,
+	j_rocket = true,
+	j_cloud_9 = true,
+	j_satellite = true,
 	j_delayed_grat = true,
-	j_todo_list    = true,
-	j_to_the_moon  = true,
+	j_todo_list = true,
+	j_to_the_moon = true,
 }
 
 local function has_joker(key)
-	if not G.jokers then return false end
+	if not G.jokers then
+		return false
+	end
 	for _, j in ipairs(G.jokers.cards) do
-		if j.config.center.key == key then return true end
+		if j.config.center.key == key then
+			return true
+		end
 	end
 	return false
 end
@@ -51,32 +55,40 @@ SMODS.Joker({
 		return bonus > 0 and bonus or nil
 	end,
 	calculate = function(self, card, context)
-		if context.blueprint then return end
+		if context.blueprint then
+			return
+		end
 
 		-- Per played card (Golden Ticket, Business Card, Rough Gem)
 		if context.individual and context.cardarea == G.play then
 			local dollars = 0
-			if has_joker('j_ticket') and SMODS.has_enhancement(context.other_card, 'm_gold') then
+			if has_joker("j_ticket") and SMODS.has_enhancement(context.other_card, "m_gold") then
 				dollars = dollars + 1
 			end
-			if has_joker('j_business') and context.other_card:is_face() then
+			if has_joker("j_business") and context.other_card:is_face() then
 				dollars = dollars + 1
 			end
-			if has_joker('j_rough_gem') and context.other_card:is_suit('Diamonds') then
+			if has_joker("j_rough_gem") and context.other_card:is_suit("Diamonds") then
 				dollars = dollars + 1
 			end
 			if dollars > 0 then
 				G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + dollars
-				G.E_MANAGER:add_event(Event({func = (function() G.GAME.dollar_buffer = 0; return true end)}))
+				G.E_MANAGER:add_event(Event({ func = function()
+					G.GAME.dollar_buffer = 0
+					return true
+				end }))
 				return { dollars = dollars, card = card }
 			end
 		end
 
 		-- Per held card (Reserved Parking)
 		if context.individual and context.cardarea == G.hand then
-			if has_joker('j_reserved_parking') and context.other_card:is_face() and not context.other_card.debuff then
+			if has_joker("j_reserved_parking") and context.other_card:is_face() and not context.other_card.debuff then
 				G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + 1
-				G.E_MANAGER:add_event(Event({func = (function() G.GAME.dollar_buffer = 0; return true end)}))
+				G.E_MANAGER:add_event(Event({ func = function()
+					G.GAME.dollar_buffer = 0
+					return true
+				end }))
 				return { dollars = 1, card = card }
 			end
 		end
@@ -84,31 +96,39 @@ SMODS.Joker({
 		-- Per discard (Mail-In Rebate, Faceless Joker, Trading Card)
 		if context.pre_discard then
 			local dollars = 0
-			if has_joker('j_mail') and context.other_card and not context.other_card.debuff and
-			   context.other_card:get_id() == G.GAME.current_round.mail_card.id then
+			if
+				has_joker("j_mail")
+				and context.other_card
+				and not context.other_card.debuff
+				and context.other_card:get_id() == G.GAME.current_round.mail_card.id
+			then
 				dollars = dollars + 1
 			end
-			if has_joker('j_faceless') and context.other_card == context.full_hand[#context.full_hand] then
+			if has_joker("j_faceless") and context.other_card == context.full_hand[#context.full_hand] then
 				local face_count = 0
 				for _, v in ipairs(context.full_hand) do
-					if v:is_face() then face_count = face_count + 1 end
+					if v:is_face() then
+						face_count = face_count + 1
+					end
 				end
-				if face_count >= 3 then dollars = dollars + 1 end
+				if face_count >= 3 then
+					dollars = dollars + 1
+				end
 			end
-			if has_joker('j_trading') and G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
+			if has_joker("j_trading") and G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1 then
 				dollars = dollars + 1
 			end
 			if dollars > 0 then
 				ease_dollars(dollars)
-				return { message = localize('$')..dollars, colour = G.C.MONEY }
+				return { message = localize("$") .. dollars, colour = G.C.MONEY }
 			end
 		end
 
 		-- Boss blind trigger (Matador)
 		if context.debuffed_hand then
-			if has_joker('j_matador') and G.GAME.blind.triggered then
+			if has_joker("j_matador") and G.GAME.blind.triggered then
 				ease_dollars(1)
-				return { message = localize('$')..'1', colour = G.C.MONEY }
+				return { message = localize("$") .. "1", colour = G.C.MONEY }
 			end
 		end
 	end,

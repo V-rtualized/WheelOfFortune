@@ -24,7 +24,9 @@ function WOF.show_shared_spin_ui()
 end
 
 function WOF.do_shared_spin()
-	if WOF.shared_spin_sent then return end
+	if WOF.shared_spin_sent then
+		return
+	end
 	WOF.shared_spin_sent = true
 
 	local effect = WOF.get_random_effect(true)

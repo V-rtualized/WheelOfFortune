@@ -9,7 +9,9 @@ WOF.Effect({
 				eligible[#eligible + 1] = card
 			end
 		end
-		if #eligible == 0 then return end
+		if #eligible == 0 then
+			return
+		end
 		eligible[math.random(#eligible)]:set_rental(true)
 	end,
 }):inject()

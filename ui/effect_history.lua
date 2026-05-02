@@ -62,7 +62,10 @@ function WOF.create_UIBox_effect_history()
 					n = G.UIT.R,
 					config = { align = "cm" },
 					nodes = {
-						{ n = G.UIT.T, config = { text = localize("k_wof_no_effects"), scale = 0.5, colour = G.C.UI.TEXT_INACTIVE } },
+						{
+							n = G.UIT.T,
+							config = { text = localize("k_wof_no_effects"), scale = 0.5, colour = G.C.UI.TEXT_INACTIVE },
+						},
 					},
 				},
 			},

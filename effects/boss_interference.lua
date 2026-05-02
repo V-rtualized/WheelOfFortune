@@ -25,8 +25,12 @@ WOF.Effect({
 		WOF.flags[self.flag] = true
 		local small_boss = pick_boss_blind("wof_bi_small")
 		local big_boss = pick_boss_blind("wof_bi_big")
-		if small_boss then G.GAME.round_resets.blind_choices.Small = small_boss end
-		if big_boss then G.GAME.round_resets.blind_choices.Big = big_boss end
+		if small_boss then
+			G.GAME.round_resets.blind_choices.Small = small_boss
+		end
+		if big_boss then
+			G.GAME.round_resets.blind_choices.Big = big_boss
+		end
 	end,
 	on_remove = function(self)
 		WOF.flags[self.flag] = false

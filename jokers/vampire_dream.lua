@@ -1,5 +1,11 @@
 local ENHANCEMENTS = {
-	'm_bonus', 'm_mult', 'm_wild', 'm_steel', 'm_stone', 'm_gold', 'm_lucky',
+	"m_bonus",
+	"m_mult",
+	"m_wild",
+	"m_steel",
+	"m_stone",
+	"m_gold",
+	"m_lucky",
 }
 
 SMODS.Joker({
@@ -18,10 +24,12 @@ SMODS.Joker({
 				if not v.debuff then
 					local key = ENHANCEMENTS[math.random(#ENHANCEMENTS)]
 					v:set_ability(G.P_CENTERS[key], nil, true)
-					G.E_MANAGER:add_event(Event({ func = function()
-						v:juice_up()
-						return true
-					end }))
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							v:juice_up()
+							return true
+						end,
+					}))
 				end
 			end
 		end

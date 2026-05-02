@@ -9,18 +9,17 @@ SMODS.Joker({
 	no_collection = true,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
-		local suit = WOF.mosaic_suit or 'Hearts'
+		local suit = WOF.mosaic_suit or "Hearts"
 		return {
 			vars = {
-				localize(suit, 'suits_plural'),
+				localize(suit, "suits_plural"),
 				colours = { G.C.SUITS[suit] },
 			},
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play
-		   and WOF.flags.mosaic and not context.blueprint then
-			if context.other_card:is_suit(WOF.mosaic_suit or '') then
+		if context.individual and context.cardarea == G.play and WOF.flags.mosaic and not context.blueprint then
+			if context.other_card:is_suit(WOF.mosaic_suit or "") then
 				return { mult = 10, card = context.other_card }
 			else
 				return { mult = -5, card = context.other_card }

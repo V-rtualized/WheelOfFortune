@@ -16,8 +16,9 @@ WOF.Effect({
 
 local use_consumeable_ref = Card.use_consumeable
 function Card:use_consumeable(area, copier)
-	if WOF.flags.planetary_alignment
-		and self.ability.set == 'Planet'
+	if
+		WOF.flags.planetary_alignment
+		and self.ability.set == "Planet"
 		and WOF.planetary_alignment_count > 0
 		and not copier
 	then
@@ -29,7 +30,8 @@ function Card:use_consumeable(area, copier)
 		local hand_type = self.ability.consumeable and self.ability.consumeable.hand_type
 		if hand_type then
 			G.E_MANAGER:add_event(Event({
-				trigger = "after", delay = 0.4,
+				trigger = "after",
+				delay = 0.4,
 				func = function()
 					level_up_hand(self, hand_type)
 					return true

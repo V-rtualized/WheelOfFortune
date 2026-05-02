@@ -25,7 +25,9 @@ SMODS.Joker({
 					end
 				end
 
-				if #scored == 0 then return end
+				if #scored == 0 then
+					return
+				end
 
 				if math.random() < 0.5 then
 					-- Destroy

@@ -8,7 +8,7 @@ WOF.Effect({
 	on_add = function(self)
 		WOF.tea_break_end_time = G.TIMERS.REAL + 30
 		WOF.flags.tea_break = true
-		local data = NFS.read('data', WOF.path .. "assets/voice_message.ogg")
+		local data = NFS.read("data", WOF.path .. "assets/voice_message.ogg")
 		if data then
 			local ok, source = pcall(function()
 				return love.audio.newSource(love.sound.newDecoder(data), "stream")

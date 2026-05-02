@@ -31,7 +31,11 @@ WOF.Effect({
 local emplace_ref = CardArea.emplace
 function CardArea:emplace(card, ...)
 	emplace_ref(self, card, ...)
-	if WOF.flags.shop_inflation and card and (self == G.shop_jokers or self == G.shop_booster or self == G.shop_vouchers) then
+	if
+		WOF.flags.shop_inflation
+		and card
+		and (self == G.shop_jokers or self == G.shop_booster or self == G.shop_vouchers)
+	then
 		wof_inflate_card(card)
 	end
 end

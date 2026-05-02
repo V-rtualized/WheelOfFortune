@@ -9,10 +9,10 @@ SMODS.Joker({
 	no_collection = true,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
-		local suit = WOF.suit_mastery_suit or 'Hearts'
+		local suit = WOF.suit_mastery_suit or "Hearts"
 		return {
 			vars = {
-				localize(suit, 'suits_singular'),
+				localize(suit, "suits_singular"),
 				colours = { G.C.SUITS[suit] },
 			},
 		}

@@ -14,8 +14,13 @@ WOF.Effect({
 local emplace_ref = CardArea.emplace
 function CardArea:emplace(card, ...)
 	emplace_ref(self, card, ...)
-	if WOF.flags.foil_factory and self == G.shop_jokers
-		and card and card.config and card.config.center and card.config.center.set == "Joker"
+	if
+		WOF.flags.foil_factory
+		and self == G.shop_jokers
+		and card
+		and card.config
+		and card.config.center
+		and card.config.center.set == "Joker"
 	then
 		if not card.edition then
 			card:set_edition({ foil = true }, true)

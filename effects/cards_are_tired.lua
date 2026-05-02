@@ -17,7 +17,9 @@ WOF.Effect({
 		local count = 4 * (ante - 1)
 		local pool = {}
 		for _, card in ipairs(G.playing_cards) do
-			if not card.debuff then pool[#pool + 1] = card end
+			if not card.debuff then
+				pool[#pool + 1] = card
+			end
 		end
 		WOF.cards_are_tired_debuffed = {}
 		for i = 1, math.min(count, #pool) do

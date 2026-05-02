@@ -113,7 +113,9 @@ end
 
 G.FUNCS.wof_spin_wheel = function(e)
 	local effect = WOF.get_random_effect(false)
-	if not effect then return end
+	if not effect then
+		return
+	end
 
 	WOF.wheel_spun_this_shop = true
 	ease_dollars(-WOF.spin_cost())

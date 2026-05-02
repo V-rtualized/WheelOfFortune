@@ -9,7 +9,9 @@ WOF.Effect({
 		WOF.default_on_add(self)
 		for _, area in ipairs({ G.jokers, G.consumeables, G.hand }) do
 			if area then
-				for _, card in ipairs(area.cards) do card:set_cost() end
+				for _, card in ipairs(area.cards) do
+					card:set_cost()
+				end
 			end
 		end
 	end,
@@ -17,7 +19,9 @@ WOF.Effect({
 		WOF.default_on_remove(self)
 		for _, area in ipairs({ G.jokers, G.consumeables, G.hand }) do
 			if area then
-				for _, card in ipairs(area.cards) do card:set_cost() end
+				for _, card in ipairs(area.cards) do
+					card:set_cost()
+				end
 			end
 		end
 	end,
@@ -28,6 +32,6 @@ function Card:set_cost(...)
 	set_cost_ref(self, ...)
 	if WOF.flags.recycling and self.cost and self.cost > 0 then
 		self.sell_cost = self.cost + (self.ability.extra_value or 0)
-		self.sell_cost_label = self.facing == 'back' and '?' or self.sell_cost
+		self.sell_cost_label = self.facing == "back" and "?" or self.sell_cost
 	end
 end

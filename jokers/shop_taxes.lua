@@ -14,18 +14,21 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.setting_blind and WOF.flags.shop_taxes and not context.blueprint
-		   and WOF.shop_taxes_count > 0 then
-			G.E_MANAGER:add_event(Event({ func = function()
-				ease_hands_played(-WOF.shop_taxes_count)
-				G.E_MANAGER:add_event(Event({ func = function()
-					if G.GAME.current_round.hands_left <= 0 then
-						WOF.shop_taxes_zero_hands = true
-					end
+		if context.setting_blind and WOF.flags.shop_taxes and not context.blueprint and WOF.shop_taxes_count > 0 then
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					ease_hands_played(-WOF.shop_taxes_count)
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							if G.GAME.current_round.hands_left <= 0 then
+								WOF.shop_taxes_zero_hands = true
+							end
+							return true
+						end,
+					}))
 					return true
-				end }))
-				return true
-			end }))
+				end,
+			}))
 		end
 	end,
 	in_pool = function(self, args)

@@ -39,7 +39,9 @@ function WOF.load_dir(directory)
 	local dir_path = WOF.path .. "/" .. directory
 	local items = NFS.getDirectoryItemsInfo(dir_path)
 	table.sort(items, function(a, b)
-		if has_prefix(a.name) ~= has_prefix(b.name) then return has_prefix(a.name) end
+		if has_prefix(a.name) ~= has_prefix(b.name) then
+			return has_prefix(a.name)
+		end
 		return false
 	end)
 
@@ -79,7 +81,13 @@ if MP and MP.register_mod_action then
 	end)
 
 	MP.register_mod_action("shared_spin", function(action)
-		sendDebugMessage("[WOF] Received shared_spin action. effect_key=" .. tostring(action.effect_key) .. " from=" .. tostring(action.from), "WOF")
+		sendDebugMessage(
+			"[WOF] Received shared_spin action. effect_key="
+				.. tostring(action.effect_key)
+				.. " from="
+				.. tostring(action.from),
+			"WOF"
+		)
 		local effect = WOF.Effects[action.effect_key]
 		if not effect then
 			sendWarnMessage("[WOF] Unknown effect key: " .. tostring(action.effect_key), "WOF")
@@ -133,12 +141,16 @@ if MP and MP.register_mod_action then
 	end)
 
 	MP.register_mod_action("master_thief_response", function(action)
-		if not action.joker_key then return end
-		if not G.shop_jokers then return end
+		if not action.joker_key then
+			return
+		end
+		if not G.shop_jokers then
+			return
+		end
 		local card = create_card("Joker", G.shop_jokers, false, nil, nil, nil, action.joker_key)
 		card:set_cost()
 		G.shop_jokers:emplace(card)
-		create_shop_card_ui(card, 'Joker', G.shop_jokers)
+		create_shop_card_ui(card, "Joker", G.shop_jokers)
 	end)
 
 	MP.register_mod_action("switcheroo_request", function(action)
@@ -159,14 +171,16 @@ if MP and MP.register_mod_action then
 				G.consumeables.cards[i]:start_dissolve()
 			end
 		end
-		G.E_MANAGER:add_event(Event({ func = function()
-			for _, saved in ipairs(their_tarots) do
-				local card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
-				card:load(saved)
-				G.consumeables:emplace(card)
-			end
-			return true
-		end }))
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				for _, saved in ipairs(their_tarots) do
+					local card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
+					card:load(saved)
+					G.consumeables:emplace(card)
+				end
+				return true
+			end,
+		}))
 		MP.ACTIONS.modded("WheelOfFortune", "switcheroo_response", { tarots = encoded })
 	end)
 
@@ -181,13 +195,15 @@ if MP and MP.register_mod_action then
 				G.consumeables.cards[i]:start_dissolve()
 			end
 		end
-		G.E_MANAGER:add_event(Event({ func = function()
-			for _, saved in ipairs(their_tarots) do
-				local card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
-				card:load(saved)
-				G.consumeables:emplace(card)
-			end
-			return true
-		end }))
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				for _, saved in ipairs(their_tarots) do
+					local card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
+					card:load(saved)
+					G.consumeables:emplace(card)
+				end
+				return true
+			end,
+		}))
 	end)
 end

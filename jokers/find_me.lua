@@ -9,15 +9,19 @@ SMODS.Joker({
 	no_collection = true,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
-		local rank_label = WOF.find_me_round.label and localize(WOF.find_me_round.label, 'ranks') or '?'
+		local rank_label = WOF.find_me_round.label and localize(WOF.find_me_round.label, "ranks") or "?"
 		return { vars = { rank_label } }
 	end,
 	calculate = function(self, card, context)
-		if context.repetition and context.cardarea == G.play
-		   and WOF.flags.find_me and not context.blueprint
-		   and context.other_card:get_id() == (WOF.find_me_round.id or -1) then
+		if
+			context.repetition
+			and context.cardarea == G.play
+			and WOF.flags.find_me
+			and not context.blueprint
+			and context.other_card:get_id() == (WOF.find_me_round.id or -1)
+		then
 			return {
-				message = localize('k_again_ex'),
+				message = localize("k_again_ex"),
 				repetitions = 1,
 				card = card,
 			}

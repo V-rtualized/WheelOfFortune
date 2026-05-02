@@ -20,13 +20,15 @@ WOF.Effect({
 
 local is_suit_ref = Card.is_suit
 function Card:is_suit(suit, bypass_debuff, flush_calc)
-	if WOF.flags.suit_mastery and WOF.suit_mastery_suit
-		and self.base and self.base.suit == WOF.suit_mastery_suit
-	then
+	if WOF.flags.suit_mastery and WOF.suit_mastery_suit and self.base and self.base.suit == WOF.suit_mastery_suit then
 		if flush_calc then
-			if not SMODS.has_no_suit(self) then return true end
+			if not SMODS.has_no_suit(self) then
+				return true
+			end
 		else
-			if not (self.debuff and not bypass_debuff) then return true end
+			if not (self.debuff and not bypass_debuff) then
+				return true
+			end
 		end
 	end
 	return is_suit_ref(self, suit, bypass_debuff, flush_calc)

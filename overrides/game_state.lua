@@ -19,7 +19,9 @@ function MP.reset_game_states()
 
 	WOF.doing_nothing_triggered = false
 	local dn = WOF.Effects.doing_nothing
-	if dn then dn.message = "k_wof_effect_doing_nothing_first" end
+	if dn then
+		dn.message = "k_wof_effect_doing_nothing_first"
+	end
 	WOF.planetary_alignment_count = 0
 	WOF.suit_mastery_suit = nil
 	WOF.tea_break_end_time = nil
@@ -73,8 +75,13 @@ function Game:update_new_round(dt)
 		update_new_round_ref(self, dt)
 		return
 	end
-	if WOF.flags.blinds_inverted and G.GAME and G.GAME.blind
-	   and not MP.is_pvp_boss() and (G.GAME.blind.chips or 0) >= 0 then
+	if
+		WOF.flags.blinds_inverted
+		and G.GAME
+		and G.GAME.blind
+		and not MP.is_pvp_boss()
+		and (G.GAME.blind.chips or 0) >= 0
+	then
 		local chips = G.GAME.chips
 		local blind_chips = G.GAME.blind.chips
 		if to_big(chips) >= to_big(blind_chips) then
@@ -126,7 +133,9 @@ local toggle_shop_ref = G.FUNCS.toggle_shop
 G.FUNCS.toggle_shop = function(e)
 	if WOF.flags.tea_break then
 		-- one_press sets disable_button=true before calling us; reset it so the button stays clickable
-		if e then e.disable_button = false end
+		if e then
+			e.disable_button = false
+		end
 		return
 	end
 	toggle_shop_ref(e)

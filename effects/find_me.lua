@@ -3,19 +3,24 @@ WOF.find_me_round = { id = nil, label = nil }
 WOF.pick_find_me_rank = function()
 	local valid = {}
 	for _, v in ipairs(G.playing_cards) do
-		if v.ability.effect ~= 'Stone Card' and not SMODS.has_no_rank(v) then
+		if v.ability.effect ~= "Stone Card" and not SMODS.has_no_rank(v) then
 			valid[#valid + 1] = v
 		end
 	end
-	if not valid[1] then return end
+	if not valid[1] then
+		return
+	end
 
 	local blind_states = G.GAME.round_resets.blind_states
 	local offset = 0
-	if blind_states.Big == 'Current' then offset = 1
-	elseif blind_states.Boss == 'Current' then offset = 2 end
+	if blind_states.Big == "Current" then
+		offset = 1
+	elseif blind_states.Boss == "Current" then
+		offset = 2
+	end
 
 	local ante = G.GAME.round_resets.ante or 0
-	local card = pseudorandom_element(valid, pseudoseed('wof_find_me' .. ante .. offset))
+	local card = pseudorandom_element(valid, pseudoseed("wof_find_me" .. ante .. offset))
 	WOF.find_me_round.id = card.base.id
 	WOF.find_me_round.label = card.base.value
 end

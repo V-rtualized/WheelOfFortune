@@ -3,7 +3,9 @@ WOF.Effect({
 	message = "k_wof_effect_switcheroo",
 	is_shared = false,
 	on_add = function(self)
-		if not (MP and MP.ACTIONS and MP.UTILS) then return end
+		if not (MP and MP.ACTIONS and MP.UTILS) then
+			return
+		end
 		local my_tarots = {}
 		for _, card in ipairs(G.consumeables.cards) do
 			if card.ability.set == "Tarot" then

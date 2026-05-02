@@ -17,7 +17,7 @@ SMODS.Joker({
 				local royal = true
 				for _, v in ipairs(context.scoring_hand) do
 					local rank = SMODS.Ranks[v.base.value]
-					royal = royal and (rank.key == 'Ace' or rank.key == '10' or rank.face)
+					royal = royal and (rank.key == "Ace" or rank.key == "10" or rank.face)
 				end
 				if royal then
 					G.E_MANAGER:add_event(Event({
@@ -26,7 +26,10 @@ SMODS.Joker({
 							local tarot = Card(
 								G.consumeables.T.x + G.consumeables.T.w / 2,
 								G.consumeables.T.y,
-								G.CARD_W, G.CARD_H, nil, center,
+								G.CARD_W,
+								G.CARD_H,
+								nil,
+								center,
 								{ bypass_discovery_center = true, bypass_discovery_ui = true, discover = true }
 							)
 							tarot:start_materialize()

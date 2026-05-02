@@ -11,19 +11,23 @@ WOF.Effect({
 				eligible[#eligible + 1] = card
 			end
 		end
-		if #eligible == 0 then return end
+		if #eligible == 0 then
+			return
+		end
 		local target = eligible[math.random(#eligible)]
 		local saved = target:save()
-		G.E_MANAGER:add_event(Event({ func = function()
-			target:start_dissolve()
-			ease_dollars(20)
-			if math.random() < 0.5 then
-				WOF.phantom_pain_saved_card = saved
-				WOF.flags.phantom_pain = true
-				WOF.flags.phantom_pain_past_blind = false
-			end
-			return true
-		end }))
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				target:start_dissolve()
+				ease_dollars(20)
+				if math.random() < 0.5 then
+					WOF.phantom_pain_saved_card = saved
+					WOF.flags.phantom_pain = true
+					WOF.flags.phantom_pain_past_blind = false
+				end
+				return true
+			end,
+		}))
 	end,
 }):inject()
 
@@ -43,14 +47,16 @@ function CardArea:emplace(card, ...)
 		WOF.flags.phantom_pain = false
 		WOF.flags.phantom_pain_past_blind = false
 		WOF.phantom_pain_saved_card = nil
-		G.E_MANAGER:add_event(Event({ func = function()
-			local new_card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
-			new_card:load(saved)
-			new_card.added_to_deck = nil
-			new_card:set_cost()
-			G.shop_jokers:emplace(new_card)
-			create_shop_card_ui(new_card, 'Joker', G.shop_jokers)
-			return true
-		end }))
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				local new_card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
+				new_card:load(saved)
+				new_card.added_to_deck = nil
+				new_card:set_cost()
+				G.shop_jokers:emplace(new_card)
+				create_shop_card_ui(new_card, "Joker", G.shop_jokers)
+				return true
+			end,
+		}))
 	end
 end

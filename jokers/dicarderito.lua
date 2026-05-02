@@ -13,13 +13,15 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind and WOF.flags.dicarderito and not context.blueprint then
-			G.E_MANAGER:add_event(Event({func = function()
-				local h = G.GAME.current_round.hands_left
-				local d = G.GAME.current_round.discards_left
-				ease_hands_played(d - h)
-				ease_discard(h - d, nil, true)
-				return true
-			end}))
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					local h = G.GAME.current_round.hands_left
+					local d = G.GAME.current_round.discards_left
+					ease_hands_played(d - h)
+					ease_discard(h - d, nil, true)
+					return true
+				end,
+			}))
 		end
 	end,
 })

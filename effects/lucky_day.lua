@@ -8,7 +8,7 @@ WOF.Effect({
 	on_add = function(self)
 		WOF.lucky_day_converted = {}
 		for _, card in ipairs(G.playing_cards) do
-			if card.base.id == 7 and not SMODS.has_enhancement(card, 'm_lucky') then
+			if card.base.id == 7 and not SMODS.has_enhancement(card, "m_lucky") then
 				WOF.lucky_day_converted[#WOF.lucky_day_converted + 1] = {
 					playing_card = card.playing_card,
 					original_center = card.config.center.key,
