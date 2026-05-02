@@ -5,7 +5,6 @@ local END_OF_ROUND_ECONOMY_JOKERS = {
 	j_cloud_9 = true,
 	j_satellite = true,
 	j_delayed_grat = true,
-	j_todo_list = true,
 	j_to_the_moon = true,
 }
 
@@ -121,6 +120,24 @@ SMODS.Joker({
 			if dollars > 0 then
 				ease_dollars(dollars)
 				return { message = localize("$") .. dollars, colour = G.C.MONEY }
+			end
+		end
+
+		-- Per hand scored (To Do List)
+		if context.joker_main and context.scoring_name then
+			local dollars = 0
+			for _, j in ipairs(G.jokers.cards) do
+				if j.config.center.key == "j_todo_list" and context.scoring_name == j.ability.to_do_poker_hand then
+					dollars = dollars + card.ability.extra.dollars
+				end
+			end
+			if dollars > 0 then
+				G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + dollars
+				G.E_MANAGER:add_event(Event({ func = function()
+					G.GAME.dollar_buffer = 0
+					return true
+				end }))
+				return { dollars = dollars, card = card }
 			end
 		end
 

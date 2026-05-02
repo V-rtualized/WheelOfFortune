@@ -17,10 +17,10 @@ WOF.Effect({
 			trigger = "after",
 			delay = 3.5,
 			func = function()
-				local saved = WOF.Effects["eternal_spin"]
-				WOF.Effects["eternal_spin"] = nil
+				local saved = WOF.Effects["wof_effect_wheeloffortune_eternal_spin"]
+				WOF.Effects["wof_effect_wheeloffortune_eternal_spin"] = nil
 				local next_effect = WOF.get_random_effect(false)
-				WOF.Effects["eternal_spin"] = saved
+				WOF.Effects["wof_effect_wheeloffortune_eternal_spin"] = saved
 				if next_effect then
 					WOF.show_effect(next_effect)
 				end

@@ -44,7 +44,7 @@ G.FUNCS.evaluate_round = function()
 	if WOF.flags.dementia and not MP.is_pvp_boss() then
 		WOF.dementia_blinds_remaining = (WOF.dementia_blinds_remaining or 1) - 1
 		if WOF.dementia_blinds_remaining <= 0 then
-			WOF.Effects.dementia:on_remove()
+			WOF.Effects["wof_effect_wheeloffortune_dementia"]:on_remove()
 		end
 	end
 	evaluate_round_dementia_ref()
