@@ -12,6 +12,6 @@ WOF.Effect({
 	end,
 	on_remove = function(self)
 		WOF.default_on_remove(self)
-		-- Hand size is already reverted by state_events.lua at boss defeat before ease_ante fires
+		-- Hand size is reverted by state_events.lua after each blind defeat; new_round hook re-applies it while the flag is active
 	end,
 }):inject()

@@ -79,6 +79,15 @@ return {
 					"{C:inactive}(Destroyed next ante)",
 				},
 			},
+			j_wheeloffortune_lucky_day = {
+				name = "Lucky Day",
+				text = {
+					"All {C:attention}7s{} are Lucky",
+					"{C:green}Lucky{} cards trigger with",
+					"{C:green}double odds{}",
+					"{C:inactive}(Destroyed next ante)",
+				},
+			},
 			j_wheeloffortune_tarot_god = {
 				name = "Tarot God",
 				text = {
@@ -168,8 +177,8 @@ return {
 			j_wheeloffortune_random_morph = {
 				name = "Random Morph",
 				text = {
-					"Winning hand each blind:",
-					"{C:green}50%{} copy or {C:red}50%{} destroy",
+					"After each hand:",
+					"{C:green}Copy{} or {C:red}destroy{}",
 					"all scored cards",
 					"{C:inactive}(Destroyed next ante)",
 				},
@@ -246,7 +255,7 @@ return {
 			k_wof_effect_blissful_ignorance = "Opponent's exact score hidden this ante",
 			k_wof_effect_resource_drain = "Hands and discards don't refresh between blinds",
 			k_wof_effect_boss_interference = "Small and Big blinds act as Boss blinds",
-			k_wof_effect_random_morph = "Winning hand each blind: 50/50 destroy or copy",
+			k_wof_effect_random_morph = "50/50 to copy or destroy all scored cards each hand",
 			k_wof_effect_blinds = "Score under the blind to survive",
 			k_wof_royal_glass_trigger = "Justice!",
 			k_wof_blissful_higher = "Higher",

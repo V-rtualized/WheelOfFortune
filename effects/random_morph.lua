@@ -1,5 +1,3 @@
-WOF.random_morph_fired = false
-
 WOF.Effect({
 	key = "random_morph",
 	message = "k_wof_effect_random_morph",

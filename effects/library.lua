@@ -16,7 +16,7 @@ WOF.Effect({
 local create_card_ref_library = create_card
 function create_card(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 	local unbanned = false
-	if WOF.flags.library and _type == "Tarot" and not forced_key then
+	if WOF.flags.library and _type == "Tarot" and not forced_key and key_append == "ar1" then
 		forced_key = "c_fool"
 		if G.GAME.banned_keys["c_fool"] then
 			G.GAME.banned_keys["c_fool"] = nil

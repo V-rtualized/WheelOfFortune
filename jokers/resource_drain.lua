@@ -23,6 +23,9 @@ SMODS.Joker({
 			local saved_discards = WOF.resource_drain_discards_saved
 			WOF.resource_drain_hands_saved = nil
 			WOF.resource_drain_discards_saved = nil
+			if saved_hands <= 0 then
+				WOF.shop_taxes_zero_hands = true
+			end
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					local hands_delta = saved_hands - G.GAME.current_round.hands_left
@@ -33,14 +36,6 @@ SMODS.Joker({
 					if discards_delta ~= 0 then
 						ease_discard(discards_delta)
 					end
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							if G.GAME.current_round.hands_left <= 0 then
-								WOF.shop_taxes_zero_hands = true
-							end
-							return true
-						end,
-					}))
 					return true
 				end,
 			}))

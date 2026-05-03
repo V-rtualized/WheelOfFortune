@@ -93,7 +93,7 @@ Several effects create eternal, negative jokers as visual indicators while the e
 | **Royal Glass**        | Playing a Royal Straight Flush rewards a Justice Tarot card                                                                          | Chaos | Until end of ante      | Implemented |
 | **Ov6rf7ow**           | Adds 67 random playing cards to both players' decks. Both players receive the same cards                                             | Chaos | Instant                | Implemented |
 | **Blissful Ignorance** | During the next PvP, your opponent's exact score is hidden. You can only see whether you have higher or lower score                  | Chaos | Until end of ante      | Implemented |
-| **RandomMorph**        | Last played hand every blind has a 50/50 to either destroy or copy all the played cards                                              | Chaos | Until end of ante      | Implemented |
+| **RandomMorph**        | Every hand played has a 50/50 to either destroy or copy all scored cards                                                             | Chaos | Until end of ante      | Implemented |
 | **Resource Drain**     | Hands and discards are not restored between blinds for the rest of the ante                                                          | Chaos | Until end of ante      | Implemented |
 | **Groundhog Day**      | The next PvP round is played three times from the same starting state. The best result counts, gold gained in all three runs is kept | Chaos | Next PvP only          | Planned     |
 | **Evolution**          | Each card played permanently increases its rank by 1                                                                                 | Chaos | Until end of ante      | Implemented |

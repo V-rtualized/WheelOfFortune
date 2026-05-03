@@ -5,7 +5,9 @@ WOF.Effect({
 	message = "k_wof_effect_lucky_day",
 	is_shared = true,
 	removal_mode = "end_ante",
+	joker_key = "j_wheeloffortune_lucky_day",
 	on_add = function(self)
+		WOF.default_on_add(self)
 		WOF.lucky_day_converted = {}
 		for _, card in ipairs(G.playing_cards) do
 			if card.base.id == 7 and not SMODS.has_enhancement(card, "m_lucky") then
@@ -16,11 +18,9 @@ WOF.Effect({
 				card:set_ability(G.P_CENTERS.m_lucky, nil, true)
 			end
 		end
-		for k, v in pairs(G.GAME.probabilities) do
-			G.GAME.probabilities[k] = v * 2
-		end
 	end,
 	on_remove = function(self)
+		WOF.default_on_remove(self)
 		if WOF.lucky_day_converted then
 			for _, entry in ipairs(WOF.lucky_day_converted) do
 				for _, card in ipairs(G.playing_cards) do
@@ -31,9 +31,6 @@ WOF.Effect({
 				end
 			end
 			WOF.lucky_day_converted = nil
-		end
-		for k, v in pairs(G.GAME.probabilities) do
-			G.GAME.probabilities[k] = v / 2
 		end
 	end,
 }):inject()

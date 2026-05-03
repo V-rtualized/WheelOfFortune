@@ -32,12 +32,20 @@ function MP.reset_game_states()
 	WOF.resource_drain_hands_saved = nil
 	WOF.resource_drain_discards_saved = nil
 	WOF.phantom_pain_saved_card = nil
-	WOF.random_morph_fired = false
 	if WOF.tea_break_audio then
 		WOF.tea_break_audio:stop()
 		WOF.tea_break_audio = nil
 	end
 	reset_game_states_ref()
+end
+
+local new_round_ref = new_round
+function new_round()
+	new_round_ref()
+	if WOF.flags.double_draw then
+		G.hand:change_size(3)
+		G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + 3
+	end
 end
 
 local ease_ante_ref = ease_ante
@@ -122,12 +130,6 @@ G.FUNCS.evaluate_round = function()
 	else
 		evaluate_round_ref()
 	end
-end
-
-local select_blind_morph_ref = G.FUNCS.select_blind
-G.FUNCS.select_blind = function(e)
-	WOF.random_morph_fired = false
-	select_blind_morph_ref(e)
 end
 
 local toggle_shop_ref = G.FUNCS.toggle_shop
