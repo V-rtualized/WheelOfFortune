@@ -54,12 +54,30 @@ WOF.Effect = SMODS.GameObject:extend({
 	end,
 })
 
+-- Set keys to true to restrict which effects can roll (nil = no restriction)
+WOF.debug_whitelist = { shared = { wof_effect_wheeloffortune_boss_interference = true } }
+
 function WOF.get_random_effect(shared)
+	local whitelist = shared and WOF.debug_whitelist and WOF.debug_whitelist.shared
+		or (not shared and WOF.debug_whitelist and WOF.debug_whitelist.personal)
 	local eligible = {}
 	local current_ante = G.GAME.round_resets.ante or 0
 	for _, effect in pairs(WOF.Effects) do
 		if effect.is_shared == shared and current_ante >= effect.min_ante then
-			eligible[#eligible + 1] = effect
+			if not whitelist or whitelist[effect.key] then
+				local blocked = false
+				if effect.incompatible_flags then
+					for _, flag in ipairs(effect.incompatible_flags) do
+						if WOF.flags[flag] then
+							blocked = true
+							break
+						end
+					end
+				end
+				if not blocked then
+					eligible[#eligible + 1] = effect
+				end
+			end
 		end
 	end
 	if #eligible == 0 then

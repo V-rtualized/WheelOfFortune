@@ -5,4 +5,5 @@ WOF.Effect({
 	removal_mode = "end_ante",
 	flag = "dicarderito",
 	joker_key = "j_wheeloffortune_dicarderito",
+	incompatible_flags = { "resource_drain" },
 }):inject()
