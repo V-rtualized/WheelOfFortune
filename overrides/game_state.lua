@@ -11,6 +11,8 @@ function MP.reset_game_states()
 	WOF.active_effects = {}
 	WOF.effect_history = {}
 	WOF.flags = {}
+	WOF.personal_cooldown = {}
+	WOF.shared_seen = {}
 	WOF.find_me_round = { id = nil, label = nil }
 	WOF.lucky_day_converted = nil
 	G.after_pvp = nil

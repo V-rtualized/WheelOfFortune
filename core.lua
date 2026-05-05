@@ -18,6 +18,8 @@ WOF.active_shared_effect = nil
 WOF.flags = {}
 WOF.active_effects = {}
 WOF.effect_history = {}
+WOF.personal_cooldown = {}
+WOF.shared_seen = {}
 
 function WOF.load_file(file)
 	local chunk, err = SMODS.load_file(file, WOF.id)
