@@ -30,7 +30,7 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.jokers and context.joker_main then
-			card.ability.extra.loyalty_remaining = (card.ability.extra.every - 1 - G.GAME.hands_played)
+			card.ability.extra.loyalty_remaining = (card.ability.extra.every - 1 - (G.GAME.hands_played - (card.ability.hands_played_at_create or 0)))
 				% (card.ability.extra.every + 1)
 			if context.blueprint then
 				if card.ability.extra.loyalty_remaining == card.ability.extra.every then

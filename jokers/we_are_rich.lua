@@ -153,3 +153,26 @@ SMODS.Joker({
 		return false
 	end,
 })
+
+local lgg_center = SMODS.Joker:get_obj("mp_lets_go_gambling")
+sendDebugMessage("[WOF] we_are_rich: lgg_center=" .. tostring(lgg_center), "WOF")
+if lgg_center then
+	local orig_calculate = lgg_center.calculate
+	sendDebugMessage("[WOF] we_are_rich: orig_calculate=" .. tostring(orig_calculate), "WOF")
+	SMODS.Joker:take_ownership("mp_lets_go_gambling", {
+		calculate = function(self, card, context)
+			local result = orig_calculate and orig_calculate(self, card, context)
+			local has_war = has_joker("j_wheeloffortune_we_are_rich")
+			sendDebugMessage(
+				"[WOF] lgg calculate fired: result=" .. tostring(result ~= nil)
+				.. " dollars=" .. tostring(result and result.dollars)
+				.. " has_war=" .. tostring(has_war),
+				"WOF"
+			)
+			if result and result.dollars and has_war then
+				result.dollars = result.dollars + 1
+			end
+			return result
+		end,
+	}, true)
+end

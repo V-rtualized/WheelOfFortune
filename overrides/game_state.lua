@@ -22,7 +22,7 @@ function MP.reset_game_states()
 
 	WOF.pre_round_voucher = nil
 	WOF.doing_nothing_triggered = false
-	local dn = WOF.Effects.doing_nothing
+	local dn = WOF.Effects["wof_effect_wheeloffortune_doing_nothing"]
 	if dn then
 		dn.message = "k_wof_effect_doing_nothing_first"
 	end
@@ -202,4 +202,13 @@ function Game:update_shop(dt)
 	end
 
 	update_shop_ref(self, dt)
+end
+
+local game_update_ref = Game.update
+function Game:update(dt)
+	if WOF.tea_break_audio and WOF.tea_break_audio:isPlaying() and G.SETTINGS and G.SETTINGS.SOUND then
+		local vol = (G.SETTINGS.SOUND.volume / 100.0) * (G.SETTINGS.SOUND.game_sounds_volume / 100.0)
+		WOF.tea_break_audio:setVolume(vol)
+	end
+	game_update_ref(self, dt)
 end

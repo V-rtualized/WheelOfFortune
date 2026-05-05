@@ -45,9 +45,8 @@ SMODS.Joker({
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						for _, c in ipairs(scored) do
-							if c.base then
-								create_playing_card({ front = c.base }, G.deck, true, true)
-								G.deck.config.card_limit = G.deck.config.card_limit + 1
+							if c.config.card then
+								create_playing_card({ front = c.config.card }, G.deck, true, true)
 							end
 						end
 						card_eval_status_text(card, "extra", nil, nil, nil, {

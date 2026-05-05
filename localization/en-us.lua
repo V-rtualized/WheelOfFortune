@@ -116,7 +116,7 @@ return {
 				text = {
 					"All hand levels",
 					"reduced to {C:attention}0",
-					"{C:inactive}(Restored next ante)",
+					"{C:inactive}(Restored after 2 non-pvp blinds)",
 				},
 			},
 			j_wheeloffortune_dicarderito = {
