@@ -18,6 +18,7 @@ SMODS.Joker({
 					local h = G.GAME.current_round.hands_left
 					local d = G.GAME.current_round.discards_left
 					ease_hands_played(d - h)
+					G.GAME.current_round.hands_left = math.max(1, G.GAME.current_round.hands_left)
 					ease_discard(h - d, nil, true)
 					return true
 				end,

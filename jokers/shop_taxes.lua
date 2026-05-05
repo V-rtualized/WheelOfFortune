@@ -18,14 +18,7 @@ SMODS.Joker({
 			G.E_MANAGER:add_event(Event({
 				func = function()
 					ease_hands_played(-WOF.shop_taxes_count)
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							if G.GAME.current_round.hands_left <= 0 then
-								WOF.shop_taxes_zero_hands = true
-							end
-							return true
-						end,
-					}))
+					G.GAME.current_round.hands_left = math.max(1, G.GAME.current_round.hands_left)
 					return true
 				end,
 			}))
