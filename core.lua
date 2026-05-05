@@ -157,6 +157,7 @@ if MP and MP.register_mod_action then
 	end)
 
 	MP.register_mod_action("switcheroo_request", function(action)
+		WOF.show_announcement("k_wof_effect_switcheroo_stolen")
 		local my_tarots = {}
 		for _, card in ipairs(G.consumeables.cards) do
 			if card.ability.set == "Tarot" then

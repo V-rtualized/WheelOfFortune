@@ -86,6 +86,25 @@ function WOF.get_random_effect(shared)
 	return eligible[math.random(#eligible)]
 end
 
+function WOF.show_announcement(msg_key)
+	local msg = localize(msg_key)
+	local entry = { key = msg_key, message = msg, is_shared = false }
+	table.insert(WOF.effect_history, 1, entry)
+	if #WOF.effect_history > 10 then
+		table.remove(WOF.effect_history)
+	end
+	play_sound("tarot1")
+	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#msg - 18) * 0.4 / 27))
+	attention_text({
+		text = msg,
+		scale = msg_scale,
+		hold = 8,
+		align = "cm",
+		major = G.play,
+		backdrop_colour = G.C.GOLD,
+	})
+end
+
 function WOF.show_effect(effect)
 	local msg = type(effect.message) == "function" and effect.message() or localize(effect.message)
 	local entry = {

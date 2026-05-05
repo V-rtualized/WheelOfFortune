@@ -248,6 +248,7 @@ return {
 			k_wof_effect_library = "All Tarots in packs become The Fool",
 			k_wof_effect_tea_break = "Locked in shop for 30 seconds",
 			k_wof_effect_switcheroo = "Tarot cards swapped with opponent",
+			k_wof_effect_switcheroo_stolen = "Your Tarots were stolen!",
 			k_wof_effect_experience_exchange = "Two hand levels are swapped",
 			k_wof_effect_royal_glass = "Royal Flush rewards a Justice Tarot",
 			k_wof_effect_overflow = "67 random cards added to both decks",
