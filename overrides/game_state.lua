@@ -18,6 +18,7 @@ function MP.reset_game_states()
 	WOF.dementia_decrements = nil
 	WOF.dementia_blinds_remaining = nil
 
+	WOF.pre_round_voucher = nil
 	WOF.doing_nothing_triggered = false
 	local dn = WOF.Effects.doing_nothing
 	if dn then
@@ -42,6 +43,9 @@ end
 local new_round_ref = new_round
 function new_round()
 	new_round_ref()
+	-- Snapshot the voucher at round start so boss_interference can restore it if
+	-- end_round's else branch overwrites it when treating Small/Big as Boss.
+	WOF.pre_round_voucher = G.GAME.current_round and G.GAME.current_round.voucher
 	if WOF.flags.double_draw then
 		G.hand:change_size(3)
 		G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + 3
@@ -59,6 +63,40 @@ function ease_ante(mod)
 	end
 	ease_ante_ref(mod)
 	WOF.economic_boom_ante_start = WOF.economic_boom_total_spent
+end
+
+-- When boss_interference replaces Small/Big slots with actual boss blinds, end_round()
+-- sees get_type() == 'Boss' and prematurely calls ease_ante(). Returning the slot name
+-- instead keeps the vanilla state machine treating Small/Big as non-boss for tracking.
+local blind_get_type_ref = Blind.get_type
+function Blind:get_type()
+	if WOF.flags.boss_interference and G.GAME and G.GAME.blind_on_deck then
+		local slot = G.GAME.blind_on_deck
+		if slot == "Small" or slot == "Big" then
+			return slot
+		end
+	end
+	return blind_get_type_ref(self)
+end
+
+-- end_round()'s nested event still compares blind == bl_small/bl_big (not get_type()),
+-- so it wrongly sets blind_states.Boss = 'Defeated' after a Small/Big boss blind is
+-- beaten. cash_out reads that flag to generate ante-end tags before calling reset_blinds,
+-- so we correct the states here before the original runs.
+local cash_out_ref = G.FUNCS.cash_out
+G.FUNCS.cash_out = function(e)
+	if WOF.flags.boss_interference and G.GAME and G.GAME.round_resets then
+		local states = G.GAME.round_resets.blind_states
+		local slot = G.GAME.blind_on_deck
+		if states and states.Boss == "Defeated" and slot and slot ~= "Boss" then
+			states.Boss = "Upcoming"
+			states[slot] = "Defeated"
+			-- end_round's else branch overwrote the voucher because the boss blind
+			-- wasn't bl_small/bl_big; restore the snapshot taken at round start
+			G.GAME.current_round.voucher = WOF.pre_round_voucher
+		end
+	end
+	cash_out_ref(e)
 end
 
 local update_selecting_hand_wof_ref = Game.update_selecting_hand
