@@ -55,10 +55,11 @@ WOF.Effect = SMODS.GameObject:extend({
 })
 
 -- Set keys to true to restrict which effects can roll (nil = no restriction)
-WOF.debug_whitelist = {
-	personal = { wof_effect_wheeloffortune_we_are_rich = true },
-	shared = { wof_effect_wheeloffortune_wrong_loyalty = true },
-}
+-- WOF.debug_whitelist = {
+-- 	personal = { wof_effect_wheeloffortune_we_are_rich = true },
+-- 	shared = { wof_effect_wheeloffortune_wrong_loyalty = true },
+-- }
+WOF.debug_whitelist = nil
 
 function WOF.get_random_effect(shared)
 	local whitelist = shared and WOF.debug_whitelist and WOF.debug_whitelist.shared
