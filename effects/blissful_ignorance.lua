@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "blissful_ignorance",
+	display_name = "Blissful Ignorance",
 	message = "k_wof_effect_blissful_ignorance",
 	is_shared = true,
 	removal_mode = "end_ante",

@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "mirage",
+	display_name = "Mirage",
 	message = "k_wof_effect_mirage",
 	is_shared = false,
 	on_add = function(self)

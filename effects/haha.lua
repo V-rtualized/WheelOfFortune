@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "haha",
+	display_name = "Haha",
 	message = "k_wof_effect_haha",
 	is_shared = true,
 	min_ante = 0,

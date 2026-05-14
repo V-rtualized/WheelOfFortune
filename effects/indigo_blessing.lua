@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "indigo_blessing",
+	display_name = "Indigo Blessing",
 	message = "k_wof_effect_indigo_blessing",
 	is_shared = false,
 	removal_mode = "end_ante",

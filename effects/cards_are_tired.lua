@@ -2,6 +2,7 @@ WOF.cards_are_tired_debuffed = nil
 
 WOF.Effect({
 	key = "cards_are_tired",
+	display_name = "Cards Are Tired",
 	message = function()
 		local ante = G.GAME.round_resets.ante or 1
 		return (4 * (ante - 1)) .. " cards debuffed this ante"

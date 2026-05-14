@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "temperance_value",
+	display_name = "Temperance Value",
 	message = "k_wof_effect_temperance_value",
 	is_shared = false,
 	min_ante = 0,

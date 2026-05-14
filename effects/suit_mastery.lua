@@ -3,6 +3,7 @@ local SUITS = { "Hearts", "Diamonds", "Clubs", "Spades" }
 
 WOF.Effect({
 	key = "suit_mastery",
+	display_name = "Suit Mastery",
 	message = "k_wof_effect_suit_mastery",
 	is_shared = false,
 	removal_mode = "end_ante",

@@ -3,6 +3,7 @@ WOF.tea_break_audio = nil
 
 WOF.Effect({
 	key = "tea_break",
+	display_name = "Tea Break",
 	message = "k_wof_effect_tea_break",
 	is_shared = false,
 	on_add = function(self)

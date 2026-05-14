@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "wrong_loyalty",
+	display_name = "Wrong Loyalty",
 	message = "k_wof_effect_wrong_loyalty",
 	is_shared = true,
 	min_ante = 0,

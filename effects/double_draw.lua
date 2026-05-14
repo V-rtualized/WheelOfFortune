@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "double_draw",
+	display_name = "Double Draw",
 	message = "k_wof_effect_double_draw",
 	is_shared = false,
 	removal_mode = "end_ante",

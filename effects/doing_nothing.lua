@@ -2,6 +2,7 @@ WOF.doing_nothing_triggered = false
 
 WOF.Effect({
 	key = "doing_nothing",
+	display_name = "Doing Nothing?",
 	message = "k_wof_effect_doing_nothing_first",
 	is_shared = false,
 	on_add = function(self)

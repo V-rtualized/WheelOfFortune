@@ -11,6 +11,7 @@ end
 
 WOF.Effect({
 	key = "economic_boom",
+	display_name = "Economic Boom",
 	message = "k_wof_effect_economic_boom",
 	is_shared = false,
 	removal_mode = "end_ante",

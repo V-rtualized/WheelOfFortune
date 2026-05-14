@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "royal_glass",
+	display_name = "Royal Glass",
 	message = "k_wof_effect_royal_glass",
 	is_shared = true,
 	removal_mode = "end_ante",

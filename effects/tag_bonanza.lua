@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "tag_bonanza",
+	display_name = "Tag Bonanza",
 	message = "k_wof_effect_tag_bonanza",
 	is_shared = false,
 	min_ante = 0,

@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "lucky_streak",
+	display_name = "Lucky Streak",
 	message = "k_wof_effect_lucky_streak",
 	is_shared = false,
 	removal_mode = "end_ante",

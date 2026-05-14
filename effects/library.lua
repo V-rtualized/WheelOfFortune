@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "library",
+	display_name = "Library",
 	message = "k_wof_effect_library",
 	is_shared = false,
 	removal_mode = "end_ante",

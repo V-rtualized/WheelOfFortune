@@ -2,6 +2,7 @@ local EDITIONS = { { foil = true }, { holo = true }, { polychrome = true } }
 
 WOF.Effect({
 	key = "gambler_shuffle",
+	display_name = "Gambler's Shuffle",
 	message = "k_wof_effect_gambler_shuffle",
 	is_shared = false,
 	on_add = function(self)

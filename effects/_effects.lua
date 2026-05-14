@@ -44,6 +44,7 @@ WOF.Effect = SMODS.GameObject:extend({
 		"message",
 	},
 	class_prefix = "wof_effect",
+	display_name = "",
 	is_shared = false,
 	min_ante = 0,
 	removal_mode = "manual",
@@ -159,27 +160,15 @@ function WOF.show_effect(effect)
 
 	play_sound("tarot1")
 
-	local msg_scale = math.max(0.6, math.min(1.4, 1.4 - (#msg - 18) * 0.4 / 27))
+	-- Start the spin animation overlay.
+	WOF.start_spin_animation(effect)
 
-	attention_text({
-		text = msg,
-		scale = msg_scale,
-		hold = 8,
-		align = "cm",
-		major = G.play,
-		backdrop_colour = G.C.GOLD,
-	})
-
-	-- Capture before on_add because doing_nothing sets the flag inside on_add
+	-- Capture before on_add because doing_nothing sets the flag inside on_add.
 	local is_first_doing_nothing = (effect.key == "wof_effect_wheeloffortune_doing_nothing")
 		and not WOF.doing_nothing_triggered
 
-	effect:on_add()
-
-	if effect.removal_mode == "end_ante" then
-		table.insert(WOF.active_effects, effect.key)
-	end
-
+	-- Record cooldown / shared-seen immediately so the next spin rolls correctly
+	-- even if the player spins again before the animation finishes.
 	if effect.is_shared then
 		WOF.shared_seen[effect.key] = true
 	elseif not is_first_doing_nothing then
@@ -188,4 +177,18 @@ function WOF.show_effect(effect)
 			table.remove(WOF.personal_cooldown, 1)
 		end
 	end
+
+	-- Defer on_add() until the animation overlay finishes (WOF.anim_state clears to nil).
+	-- blocking = false keeps the game fully interactive during playback.
+	G.E_MANAGER:add_event(Event({
+		blocking = false,
+		func     = function()
+			if WOF.anim_state ~= nil then return false end
+			effect:on_add()
+			if effect.removal_mode == "end_ante" then
+				table.insert(WOF.active_effects, effect.key)
+			end
+			return true
+		end,
+	}))
 end

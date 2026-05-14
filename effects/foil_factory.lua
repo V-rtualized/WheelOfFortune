@@ -2,6 +2,7 @@ WOF.foil_factory_count = 0
 
 WOF.Effect({
 	key = "foil_factory",
+	display_name = "Foil Factory",
 	message = "k_wof_effect_foil_factory",
 	is_shared = false,
 	removal_mode = "manual",

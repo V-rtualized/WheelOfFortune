@@ -2,6 +2,7 @@ WOF.lucky_day_converted = nil
 
 WOF.Effect({
 	key = "lucky_day",
+	display_name = "Lucky Day",
 	message = "k_wof_effect_lucky_day",
 	is_shared = true,
 	removal_mode = "end_ante",

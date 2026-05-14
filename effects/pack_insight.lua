@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "pack_insight",
+	display_name = "Pack Insight",
 	message = "k_wof_effect_pack_insight",
 	is_shared = false,
 	on_add = function(self)

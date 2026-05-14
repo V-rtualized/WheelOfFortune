@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "master_thief",
+	display_name = "Master Thief",
 	message = "k_wof_effect_master_thief",
 	is_shared = false,
 	min_ante = 0,

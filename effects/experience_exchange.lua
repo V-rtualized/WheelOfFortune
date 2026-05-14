@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "experience_exchange",
+	display_name = "Experience Exchange",
 	message = "k_wof_effect_experience_exchange",
 	on_add = function(self)
 		local names = {}

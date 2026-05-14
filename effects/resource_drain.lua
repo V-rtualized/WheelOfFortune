@@ -3,6 +3,7 @@ WOF.resource_drain_discards_saved = nil
 
 WOF.Effect({
 	key = "resource_drain",
+	display_name = "Resource Drain",
 	message = "k_wof_effect_resource_drain",
 	is_shared = true,
 	removal_mode = "end_ante",

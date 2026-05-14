@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "overflow",
+	display_name = "Ov6rf7ow",
 	message = "k_wof_effect_overflow",
 	is_shared = true,
 	removal_mode = "manual",

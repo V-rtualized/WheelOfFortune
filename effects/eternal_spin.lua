@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "eternal_spin",
+	display_name = "Eternal Spin",
 	message = function()
 		local ante = G.GAME.round_resets.ante or 1
 		return "Gain/lose $" .. (5 * ante) .. ", then spin again"

@@ -2,6 +2,7 @@ WOF.phantom_pain_saved_card = nil
 
 WOF.Effect({
 	key = "phantom_pain",
+	display_name = "Phantom Pain",
 	message = "k_wof_effect_phantom_pain",
 	is_shared = false,
 	on_add = function(self)

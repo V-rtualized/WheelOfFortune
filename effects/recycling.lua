@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "recycling",
+	display_name = "Recycling",
 	message = "k_wof_effect_recycling",
 	is_shared = false,
 	removal_mode = "end_ante",

@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "legendary_comeback",
+	display_name = "Legendary Comeback",
 	message = "k_wof_effect_legendary_comeback",
 	is_shared = false,
 	removal_mode = "manual",

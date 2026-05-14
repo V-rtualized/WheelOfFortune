@@ -65,6 +65,7 @@ WOF.load_file("ui/shared_spin.lua")
 WOF.load_file("ui/effect_history.lua")
 WOF.load_file("ui/lobby.lua")
 WOF.load_file("ui/double_or_nothing.lua")
+WOF.load_file("ui/spin_animation.lua")
 WOF.load_file("overrides/game_state.lua")
 
 -- Register shared spin handlers with Multiplayer mod
@@ -118,11 +119,11 @@ if MP and MP.register_mod_action then
 
 		WOF.show_effect(effect)
 
-		-- After a delay, signal that the shared spin is done
+		-- Wait for the animation overlay to finish before resuming shared spin flow.
 		G.E_MANAGER:add_event(Event({
-			trigger = "after",
-			delay = 3,
+			blocking = false,
 			func = function()
+				if WOF.anim_state ~= nil then return false end
 				sendDebugMessage("[WOF] Shared spin delay complete, setting shared_spin_complete=true", "WOF")
 				WOF.shared_spin_complete = true
 				return true

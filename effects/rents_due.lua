@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "rents_due",
+	display_name = "Rent's Due",
 	message = "k_wof_effect_rents_due",
 	is_shared = false,
 	on_add = function(self)

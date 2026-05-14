@@ -10,6 +10,7 @@ end
 
 WOF.Effect({
 	key = "shop_inflation",
+	display_name = "Shop Inflation",
 	message = "k_wof_effect_shop_inflation",
 	is_shared = false,
 	min_ante = 0,

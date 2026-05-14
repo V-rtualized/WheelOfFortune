@@ -2,6 +2,7 @@ WOF.shop_taxes_count = 0
 
 WOF.Effect({
 	key = "shop_taxes",
+	display_name = "Shop Taxes",
 	message = "k_wof_effect_shop_taxes",
 	is_shared = true,
 	removal_mode = "end_ante",

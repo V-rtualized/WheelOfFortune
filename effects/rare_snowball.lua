@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "rare_snowball",
+	display_name = "Rare Snowball",
 	message = "k_wof_effect_rare_snowball",
 	is_shared = false,
 	removal_mode = "end_ante",

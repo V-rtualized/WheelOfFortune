@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "shop_upgrade",
+	display_name = "Shop Upgrade",
 	message = "k_wof_effect_shop_upgrade",
 	is_shared = false,
 	min_ante = 0,

@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "tarot_god",
+	display_name = "Tarot God",
 	message = "k_wof_effect_tarot_god",
 	is_shared = false,
 	removal_mode = "end_ante",

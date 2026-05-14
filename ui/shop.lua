@@ -107,7 +107,7 @@ G.FUNCS.wof_can_spin = function(e)
 	local count = WOF.wheel_spin_count or 0
 	local cost = count == 0 and WOF.spin_cost() or WOF.second_spin_cost()
 	WOF.spin_cost_display = tostring(cost)
-	if count >= 2 or (G.GAME.dollars - G.GAME.bankrupt_at) < cost then
+	if count >= 2 or (G.GAME.dollars - G.GAME.bankrupt_at) < cost or WOF.anim_state ~= nil then
 		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
 		e.config.button = nil
 	else

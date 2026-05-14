@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "vampire_dream",
+	display_name = "Vampire Dream",
 	message = "k_wof_effect_vampire_dream",
 	is_shared = true,
 	removal_mode = "end_ante",

@@ -29,6 +29,7 @@ end
 
 WOF.Effect({
 	key = "boss_interference",
+	display_name = "Boss Interference",
 	message = "k_wof_effect_boss_interference",
 	is_shared = true,
 	removal_mode = "end_ante",

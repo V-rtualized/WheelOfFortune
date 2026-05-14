@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "parasite",
+	display_name = "Parasite",
 	message = "k_wof_effect_parasite",
 	is_shared = false,
 	on_add = function(self)

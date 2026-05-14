@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "ouija_funboy",
+	display_name = "Ouija Funboy",
 	message = "k_wof_effect_ouija_funboy",
 	is_shared = false,
 	min_ante = 0,

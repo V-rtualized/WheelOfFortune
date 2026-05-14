@@ -34,6 +34,7 @@ end
 
 WOF.Effect({
 	key = "find_me",
+	display_name = "Find Me",
 	message = "k_wof_effect_find_me",
 	is_shared = true,
 	removal_mode = "end_ante",

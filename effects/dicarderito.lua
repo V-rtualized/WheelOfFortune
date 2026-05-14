@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "dicarderito",
+	display_name = "Dicarderito",
 	message = "k_wof_effect_dicarderito",
 	is_shared = false,
 	removal_mode = "end_ante",

@@ -150,6 +150,7 @@ local TRAINING_WEIGHTS_MODS = {
 
 WOF.Effect({
 	key = "training_weights",
+	display_name = "Training Weights",
 	message = "k_wof_effect_training_weights",
 	is_shared = false,
 	min_ante = 0,

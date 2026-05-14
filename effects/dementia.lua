@@ -3,6 +3,7 @@ WOF.dementia_blinds_remaining = nil
 
 WOF.Effect({
 	key = "dementia",
+	display_name = "Dementia",
 	message = "k_wof_effect_dementia",
 	is_shared = false,
 	removal_mode = "manual",

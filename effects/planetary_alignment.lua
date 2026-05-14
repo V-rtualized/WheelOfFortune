@@ -2,6 +2,7 @@ WOF.planetary_alignment_count = 0
 
 WOF.Effect({
 	key = "planetary_alignment",
+	display_name = "Planetary Alignment",
 	message = "k_wof_effect_planetary_alignment",
 	is_shared = false,
 	on_add = function(self)

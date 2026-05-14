@@ -1,5 +1,6 @@
 WOF.Effect({
 	key = "switcheroo",
+	display_name = "Switcheroo",
 	message = "k_wof_effect_switcheroo",
 	is_shared = false,
 	on_add = function(self)
