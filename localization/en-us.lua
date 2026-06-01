@@ -239,7 +239,7 @@ return {
 			k_wof_effect_recycling = "Sell cards at full price this ante",
 			k_wof_effect_planetary_alignment = "Next 3 planets trigger twice",
 			k_wof_effect_suit_mastery = "A random suit is wild this ante",
-			k_wof_effect_dementia = "Hand levels reset, restored at ante end",
+			k_wof_effect_dementia = "Hand levels reset, restored after 2 non-pvp blinds",
 			k_wof_effect_double_or_nothing = "Double or Nothing!",
 			b_wof_bet = "Bet!",
 			k_wof_effect_dicarderito = "Hands and discards swapped this ante",
