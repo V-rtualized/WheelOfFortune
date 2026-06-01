@@ -58,7 +58,6 @@ SMODS.Joker({
 								front = front,
 								center = c.config.center,
 							}, G.deck, nil, true)
-							G.deck.config.card_limit = G.deck.config.card_limit + 1
 							if c.edition then new_card:set_edition(c.edition, true, true) end
 							if c.seal then
 								new_card:set_seal(c.seal, true, true)
