@@ -3,7 +3,7 @@
 -- Regular animations (95 frames):  10 cols × 10 rows
 -- Rare animations  (123 frames):   13 cols × 10 rows
 -- Shared 94-frame:  10 cols × 10 rows
--- Shared 104-frame: 10 cols × 11 rows
+-- Shared 87-frame:  10 cols × 9 rows
 local ANIM_META = {
 	-- Personal effect animations
 	green_1           = { frames = 95,  cols = 10, rows = 10, spf = 0.03 },
@@ -18,21 +18,21 @@ local ANIM_META = {
 	rare_red_to_green = { frames = 123, cols = 13, rows = 10, spf = 0.03 },
 	rare_green_to_red = { frames = 123, cols = 13, rows = 10, spf = 0.03 },
 	-- Shared effect animations (each has its own dedicated sprite sheet)
-	haha              = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	wrong_loyalty     = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	shop_taxes        = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	boss_interference = { frames = 94,  cols = 10, rows = 10, spf = 0.04 },
-	find_me           = { frames = 94,  cols = 10, rows = 10, spf = 0.04 },
-	vampire_dream     = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	lucky_day         = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	royal_glass       = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	resource_drain    = { frames = 94,  cols = 10, rows = 10, spf = 0.04 },
-	groundhog_day     = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	blissful_ignorance= { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	random_morph      = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	evolution         = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	overflow          = { frames = 104, cols = 10, rows = 11, spf = 0.04 },
-	blinds            = { frames = 94,  cols = 10, rows = 10, spf = 0.04 },
+	haha              = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	wrong_loyalty     = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	shop_taxes        = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	boss_interference = { frames = 87 , cols = 10, rows = 9 , spf = 0.04 },
+	find_me           = { frames = 87 , cols = 10, rows = 9 , spf = 0.04 },
+	vampire_dream     = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	lucky_day         = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	royal_glass       = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	resource_drain    = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	groundhog_day     = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	blissful_ignorance= { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	random_morph      = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	evolution         = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	overflow          = { frames = 94 , cols = 10, rows = 10, spf = 0.04 },
+	blinds            = { frames = 87 , cols = 10, rows = 9 , spf = 0.04 },
 }
 
 -- Maps full SMODS effect keys to animation category.
