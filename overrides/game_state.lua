@@ -33,6 +33,13 @@ function MP.reset_game_states()
 	WOF.resource_drain_hands_saved = nil
 	WOF.resource_drain_discards_saved = nil
 	WOF.phantom_pain_saved_card = nil
+	WOF.phantom_pain_saved_key = nil
+	WOF.phantom_pain_locked_key = nil
+	WOF.economic_boom_total_spent = 0
+	WOF.economic_boom_ante_start = 0
+	WOF.economic_boom_effect_start = nil
+	WOF.economic_boom_paid = false
+	WOF.economic_boom_pending_rebate = nil
 	if WOF.tea_break_audio then
 		WOF.tea_break_audio:stop()
 		WOF.tea_break_audio = nil
@@ -129,6 +136,11 @@ end
 
 local evaluate_round_ref = G.FUNCS.evaluate_round
 G.FUNCS.evaluate_round = function()
+	if WOF.flags.resource_drain and G.GAME and G.GAME.current_round then
+		WOF.resource_drain_hands_saved = math.max(1, G.GAME.current_round.hands_left or 0)
+		WOF.resource_drain_discards_saved = G.GAME.current_round.discards_left or 0
+		G.GAME.current_round.hands_left = WOF.resource_drain_hands_saved
+	end
 	if G.after_pvp then
 		WOF.needs_shared_spin = true
 	end
@@ -166,6 +178,11 @@ end
 local update_shop_ref = Game.update_shop
 
 function Game:update_shop(dt)
+	if WOF.flags.resource_drain and WOF.resource_drain_hands_saved and G.GAME and G.GAME.current_round then
+		G.GAME.current_round.hands_left = math.max(1, WOF.resource_drain_hands_saved or 0)
+		G.GAME.current_round.discards_left = WOF.resource_drain_discards_saved or G.GAME.current_round.discards_left
+	end
+
 	if WOF.is_active() and WOF.needs_shared_spin then
 		if not WOF.shared_spin_done_this_round then
 			if not WOF.awaiting_shared_spin then
