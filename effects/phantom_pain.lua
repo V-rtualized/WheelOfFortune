@@ -1,4 +1,13 @@
 WOF.phantom_pain_saved_card = nil
+WOF.phantom_pain_saved_key = nil
+WOF.phantom_pain_locked_key = nil
+
+local function lock_phantom_pain_key()
+	if WOF.phantom_pain_saved_key and G.GAME and G.GAME.used_jokers then
+		WOF.phantom_pain_locked_key = WOF.phantom_pain_saved_key
+		G.GAME.used_jokers[WOF.phantom_pain_saved_key] = true
+	end
+end
 
 WOF.Effect({
 	key = "phantom_pain",
@@ -17,14 +26,17 @@ WOF.Effect({
 		end
 		local target = eligible[math.random(#eligible)]
 		local saved = target:save()
+		local saved_key = target.config and target.config.center and target.config.center.key
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				target:start_dissolve()
 				ease_dollars(20)
 				if math.random() < 0.5 then
 					WOF.phantom_pain_saved_card = saved
+					WOF.phantom_pain_saved_key = saved_key
 					WOF.flags.phantom_pain = true
 					WOF.flags.phantom_pain_past_blind = false
+					lock_phantom_pain_key()
 				end
 				return true
 			end,
@@ -56,8 +68,32 @@ function CardArea:emplace(card, ...)
 				new_card:set_cost()
 				G.shop_jokers:emplace(new_card)
 				create_shop_card_ui(new_card, "Joker", G.shop_jokers)
+				WOF.phantom_pain_saved_key = nil
+				WOF.phantom_pain_locked_key = nil
 				return true
 			end,
 		}))
 	end
+end
+
+local add_to_pool_ref = SMODS.add_to_pool
+function SMODS.add_to_pool(center, args)
+	if
+		WOF.flags.phantom_pain
+		and WOF.phantom_pain_saved_key
+		and center
+		and center.key == WOF.phantom_pain_saved_key
+		and not SMODS.showman(center.key)
+	then
+		return false
+	end
+	return add_to_pool_ref(center, args)
+end
+
+local create_card_for_shop_ref = create_card_for_shop
+function create_card_for_shop(area)
+	lock_phantom_pain_key()
+	local card = create_card_for_shop_ref(area)
+	lock_phantom_pain_key()
+	return card
 end
