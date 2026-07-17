@@ -24,7 +24,7 @@ WOF.Effect({
 					local card = create_playing_card({
 						front = pseudorandom_element(G.P_CARDS, pseudoseed(seed .. "_card")),
 						center = enhancement and G.P_CENTERS[enhancement] or G.P_CENTERS.c_base,
-					}, G.deck, nil, true)
+					}, G.deck, true, true)
 					local edition = pseudorandom(seed .. "_edition") < 0.08
 							and pseudorandom_element(editions, pseudoseed(seed .. "_edition_pick"))
 						or nil
