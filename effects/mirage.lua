@@ -28,7 +28,7 @@ function CardArea:emplace(card, ...)
 				local new_card = create_card("Joker", G.shop_jokers, true, nil, nil, nil, nil, "mir")
 				new_card:set_edition({ negative = true }, true)
 				if new_card.config.center.perishable_compat then
-					new_card.ability.perishable = true
+					new_card:set_perishable(true)
 					new_card.ability.perish_tally = 2
 				end
 				new_card.base_cost = 10

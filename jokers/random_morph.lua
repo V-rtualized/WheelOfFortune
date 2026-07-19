@@ -31,8 +31,19 @@ SMODS.Joker({
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						for _, c in ipairs(scored) do
-							c:start_dissolve()
+							if G.playing_cards then
+								for i = #G.playing_cards, 1, -1 do
+									if G.playing_cards[i] == c then
+										table.remove(G.playing_cards, i)
+										break
+									end
+								end
+								for i, playing_card in ipairs(G.playing_cards) do
+									playing_card.playing_card = i
+								end
+							end
 						end
+						SMODS.destroy_cards(scored, true)
 						card_eval_status_text(card, "extra", nil, nil, nil, {
 							message = localize("k_wof_random_morph_destroy"),
 							colour = G.C.RED,
