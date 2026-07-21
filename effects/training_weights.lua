@@ -7,6 +7,7 @@ local TRAINING_WEIGHTS_MODS = {
 		a.mult = a.mult * 2
 	end,
 	j_swashbuckler = function(a)
+		a.wof_training_weights_swashbuckler_mult = (a.wof_training_weights_swashbuckler_mult or 1) * 2
 		a.mult = a.mult * 2
 	end,
 
@@ -167,3 +168,15 @@ WOF.Effect({
 		end
 	end,
 }):inject()
+
+local card_update_training_weights_ref = Card.update
+function Card:update(dt)
+	card_update_training_weights_ref(self, dt)
+	if
+		self.ability
+		and self.ability.wof_training_weights_swashbuckler_mult
+		and self.ability.name == "Swashbuckler"
+	then
+		self.ability.mult = (self.ability.mult or 0) * self.ability.wof_training_weights_swashbuckler_mult
+	end
+end

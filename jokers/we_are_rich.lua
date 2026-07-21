@@ -20,6 +20,13 @@ local function has_joker(key)
 	return false
 end
 
+local function we_are_rich_end_round_bonus(joker, default_dollars)
+	if joker.config.center.key == "j_rocket" then
+		return joker.ability.extra.dollars or default_dollars
+	end
+	return default_dollars
+end
+
 SMODS.Joker({
 	key = "we_are_rich",
 	atlas = "centers",
@@ -48,7 +55,7 @@ SMODS.Joker({
 		for i = 1, #G.jokers.cards do
 			local j = G.jokers.cards[i]
 			if j ~= card and END_OF_ROUND_ECONOMY_JOKERS[j.config.center.key] then
-				bonus = bonus + card.ability.extra.dollars
+				bonus = bonus + we_are_rich_end_round_bonus(j, card.ability.extra.dollars)
 			end
 		end
 		return bonus > 0 and bonus or nil
