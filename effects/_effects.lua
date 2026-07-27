@@ -1,4 +1,13 @@
 WOF.Effects = {}
+WOF.effect_joker_keys = {}
+
+function WOF.is_effect_joker(card)
+	if not card or not card.config then
+		return false
+	end
+	local center_key = card.config.center_key or (card.config.center and card.config.center.key)
+	return center_key and WOF.effect_joker_keys[center_key] or false
+end
 
 function WOF.default_on_add(self)
 	if self.flag then
@@ -52,6 +61,9 @@ WOF.Effect = SMODS.GameObject:extend({
 	on_remove = WOF.default_on_remove,
 	inject = function(self)
 		WOF.Effects[self.key] = self
+		if self.joker_key then
+			WOF.effect_joker_keys[self.joker_key] = true
+		end
 	end,
 })
 

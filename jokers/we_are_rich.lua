@@ -100,7 +100,7 @@ SMODS.Joker({
 		end
 
 		-- Per discard (Mail-In Rebate, Faceless Joker, Trading Card)
-		if context.pre_discard then
+		if context.discard then
 			local dollars = 0
 			if
 				has_joker("j_mail")
