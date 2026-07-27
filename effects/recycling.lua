@@ -1,3 +1,13 @@
+local function refresh_card_costs()
+	for _, area in ipairs({ G.jokers, G.consumeables, G.hand, G.shop_jokers, G.shop_booster, G.shop_vouchers }) do
+		if area and area.cards then
+			for _, card in ipairs(area.cards) do
+				card:set_cost()
+			end
+		end
+	end
+end
+
 WOF.Effect({
 	key = "recycling",
 	display_name = "Recycling",
@@ -8,23 +18,11 @@ WOF.Effect({
 	joker_key = "j_wheeloffortune_recycling",
 	on_add = function(self)
 		WOF.default_on_add(self)
-		for _, area in ipairs({ G.jokers, G.consumeables, G.hand, G.shop_jokers, G.shop_booster, G.shop_vouchers }) do
-			if area then
-				for _, card in ipairs(area.cards) do
-					card:set_cost()
-				end
-			end
-		end
+		refresh_card_costs()
 	end,
 	on_remove = function(self)
 		WOF.default_on_remove(self)
-		for _, area in ipairs({ G.jokers, G.consumeables, G.hand, G.shop_jokers, G.shop_booster, G.shop_vouchers }) do
-			if area then
-				for _, card in ipairs(area.cards) do
-					card:set_cost()
-				end
-			end
-		end
+		refresh_card_costs()
 	end,
 }):inject()
 
