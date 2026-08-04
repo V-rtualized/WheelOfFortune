@@ -16,7 +16,7 @@ end
 local shop_ref = G.UIDEF.shop
 function G.UIDEF.shop()
 	WOF.wheel_spin_count = 0
-	WOF.spin_cost_display = tostring(WOF.spin_cost())
+	WOF.spin_cost_display = tostring(WOF.shop_spin_cost(0))
 	WOF.shared_spin_done_this_round = false
 	WOF.awaiting_shared_spin = false
 	WOF.shared_spin_complete = false
@@ -105,9 +105,9 @@ end
 
 G.FUNCS.wof_can_spin = function(e)
 	local count = WOF.wheel_spin_count or 0
-	local cost = count == 0 and WOF.spin_cost() or WOF.second_spin_cost()
+	local cost = WOF.shop_spin_cost(count)
 	WOF.spin_cost_display = tostring(cost)
-	if count >= 2 or (G.GAME.dollars - G.GAME.bankrupt_at) < cost or WOF.anim_state ~= nil then
+	if count >= 3 or (cost > 0 and (G.GAME.dollars - G.GAME.bankrupt_at) < cost) or WOF.anim_state ~= nil then
 		e.config.colour = G.C.UI.BACKGROUND_INACTIVE
 		e.config.button = nil
 	else
@@ -123,8 +123,10 @@ G.FUNCS.wof_spin_wheel = function(e)
 	end
 
 	local count = WOF.wheel_spin_count or 0
-	local cost = count == 0 and WOF.spin_cost() or WOF.second_spin_cost()
+	local cost = WOF.shop_spin_cost(count)
 	WOF.wheel_spin_count = count + 1
-	ease_dollars(-cost)
+	if cost > 0 then
+		ease_dollars(-cost)
+	end
 	WOF.show_effect(effect)
 end

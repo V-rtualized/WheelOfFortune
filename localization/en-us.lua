@@ -215,7 +215,7 @@ return {
 			k_wof_effect_pack_insight = "Get a random tarot or buffoon pack",
 			k_wof_effect_double_draw = "Draw 3 extra cards this ante",
 			k_wof_effect_shop_upgrade = "Shop gains 2 extra card slots",
-			k_wof_effect_legendary_comeback = "The Soul hidden among next 50 tarots",
+			k_wof_effect_legendary_comeback = "Immolate hidden among next 50 tarots",
 			k_wof_effect_rare_snowball = "Rare jokers twice as likely this ante",
 			k_wof_effect_indigo_blessing = "+1 card selectable from all packs this ante",
 			k_wof_effect_lucky_streak = "1 in 5 chance to replay hand this ante",
