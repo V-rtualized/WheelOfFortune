@@ -9,7 +9,7 @@
   "priority": 10000001,
   "badge_colour": "FFD700",
   "badge_text_colour": "FFFFFF",
-  "version": "0.3.5-beta.1",
+  "version": "0.3.5",
   "dependencies": [
     "Steamodded (>=1.0.0~BETA-1221a)",
     "Lovely (>=0.8)",
