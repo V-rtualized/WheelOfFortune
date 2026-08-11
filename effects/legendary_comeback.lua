@@ -1,6 +1,6 @@
 WOF.Effect({
 	key = "legendary_comeback",
-	display_name = "Legendary Comeback",
+	display_name = "Immolate",
 	message = "k_wof_effect_legendary_comeback",
 	is_shared = false,
 	removal_mode = "manual",
@@ -23,16 +23,16 @@ function create_card(_type, area, legendary, _rarity, skip_materialize, soulable
 	then
 		WOF.flags.legendary_comeback_count = WOF.flags.legendary_comeback_count + 1
 		if WOF.flags.legendary_comeback_count >= WOF.flags.legendary_comeback_target then
-			forced_key = "c_soul"
+			forced_key = "c_immolate"
 			local unbanned = false
-			if G.GAME.banned_keys["c_soul"] then
-				G.GAME.banned_keys["c_soul"] = nil
+			if G.GAME.banned_keys["c_immolate"] then
+				G.GAME.banned_keys["c_immolate"] = nil
 				unbanned = true
 			end
 			local card =
 				create_card_ref(_type, area, legendary, _rarity, skip_materialize, soulable, forced_key, key_append)
 			if unbanned then
-				G.GAME.banned_keys["c_soul"] = true
+				G.GAME.banned_keys["c_immolate"] = true
 			end
 			WOF.flags.legendary_comeback_target = nil
 			WOF.flags.legendary_comeback_count = nil

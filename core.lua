@@ -6,8 +6,18 @@ end
 function WOF.second_spin_cost()
 	return math.min(WOF.spin_cost() + 2, 10)
 end
+
+function WOF.shop_spin_cost(spin_count)
+	if spin_count == 0 then
+		return 0
+	elseif spin_count == 1 then
+		return WOF.spin_cost()
+	end
+	return WOF.second_spin_cost()
+end
+
 WOF.wheel_spin_count = 0
-WOF.spin_cost_display = "3"
+WOF.spin_cost_display = "0"
 WOF.awaiting_shared_spin = false
 WOF.shared_spin_complete = false
 WOF.shared_spin_done_this_round = false

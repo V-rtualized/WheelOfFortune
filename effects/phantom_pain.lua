@@ -30,14 +30,12 @@ WOF.Effect({
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				target:start_dissolve()
-				ease_dollars(20)
-				if math.random() < 0.5 then
-					WOF.phantom_pain_saved_card = saved
-					WOF.phantom_pain_saved_key = saved_key
-					WOF.flags.phantom_pain = true
-					WOF.flags.phantom_pain_past_blind = false
-					lock_phantom_pain_key()
-				end
+				ease_dollars(15)
+				WOF.phantom_pain_saved_card = saved
+				WOF.phantom_pain_saved_key = saved_key
+				WOF.flags.phantom_pain = true
+				WOF.flags.phantom_pain_past_blind = false
+				lock_phantom_pain_key()
 				return true
 			end,
 		}))
@@ -65,6 +63,7 @@ function CardArea:emplace(card, ...)
 				local new_card = Card(0, 0, G.CARD_W, G.CARD_H, G.P_CENTERS.j_joker, G.P_CENTERS.c_base)
 				new_card:load(saved)
 				new_card.added_to_deck = nil
+				new_card:set_rental(true)
 				new_card:set_cost()
 				G.shop_jokers:emplace(new_card)
 				create_shop_card_ui(new_card, "Joker", G.shop_jokers)
