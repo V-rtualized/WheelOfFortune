@@ -233,7 +233,7 @@ return {
 			k_wof_effect_parasite = "A random common joker becomes Perishable",
 			k_wof_effect_rents_due = "A random joker becomes Rental",
 			k_wof_effect_foil_factory = "Next 5 shop jokers are given Foil",
-			k_wof_effect_mirage = "Legendary negative Perishable joker with 2 rounds left in next shop",
+			k_wof_effect_mirage = "Negative Legendary Perishable Joker (2/5), never Eternal, in next shop",
 			k_wof_effect_phantom_pain = "Random joker sold for $15, returns Rental next shop",
 			k_wof_effect_tarot_god = "Gain +1 consumable slot this ante",
 			k_wof_effect_recycling = "Sell cards at full price this ante",
