@@ -8,8 +8,6 @@ WOF.Effect({
 	joker_key = "j_wheeloffortune_double_draw",
 	on_add = function(self)
 		WOF.default_on_add(self)
-		G.hand:change_size(3)
-		G.GAME.round_resets.temp_handsize = (G.GAME.round_resets.temp_handsize or 0) + 3
 	end,
 	on_remove = function(self)
 		WOF.default_on_remove(self)
