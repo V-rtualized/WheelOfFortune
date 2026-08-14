@@ -3,7 +3,7 @@ WOF.Effect({
 	display_name = "Ov6rf7ow",
 	message = "k_wof_effect_overflow",
 	is_shared = true,
-	removal_mode = "manual",
+	removal_mode = "end_ante",
 	on_add = function(self)
 		local ante = G.GAME.round_resets.ante or 1
 		local enhancements = { "m_bonus", "m_mult", "m_wild", "m_steel", "m_stone", "m_gold", "m_lucky" }
@@ -43,5 +43,29 @@ WOF.Effect({
 				return true
 			end,
 		}))
+	end,
+	on_remove = function(self)
+		local cards_to_destroy = {}
+		local destroy_lookup = {}
+		for _, card in ipairs(G.playing_cards or {}) do
+			local rank = card.base and card.base.id
+			if rank ~= 6 and rank ~= 7 then
+				cards_to_destroy[#cards_to_destroy + 1] = card
+				destroy_lookup[card] = true
+			end
+		end
+
+		for i = #(G.playing_cards or {}), 1, -1 do
+			if destroy_lookup[G.playing_cards[i]] then
+				table.remove(G.playing_cards, i)
+			end
+		end
+		for i, card in ipairs(G.playing_cards or {}) do
+			card.playing_card = i
+		end
+
+		if #cards_to_destroy > 0 then
+			SMODS.destroy_cards(cards_to_destroy, true)
+		end
 	end,
 }):inject()

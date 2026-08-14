@@ -251,7 +251,7 @@ return {
 			k_wof_effect_switcheroo_stolen = "Your Tarots were stolen!",
 			k_wof_effect_experience_exchange = "Two hand levels are swapped",
 			k_wof_effect_royal_glass = "Royal Flush rewards a Justice Tarot",
-			k_wof_effect_overflow = "67 random cards added to both decks",
+			k_wof_effect_overflow = "Add 67 cards; only 6s and 7s survive the ante",
 			k_wof_effect_shop_taxes = "Buying a joker costs 1 hand for the ante",
 			k_wof_effect_blissful_ignorance = "Opponent's exact score hidden this ante",
 			k_wof_effect_resource_drain = "Hands and discards don't refresh between blinds",

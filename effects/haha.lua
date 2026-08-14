@@ -5,5 +5,6 @@ WOF.Effect({
 	is_shared = true,
 	min_ante = 0,
 	removal_mode = "shared",
+	flag = "haha",
 	joker_key = "j_wheeloffortune_haha",
 }):inject()

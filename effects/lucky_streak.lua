@@ -6,6 +6,7 @@ WOF.Effect({
 	removal_mode = "end_ante",
 	flag = "lucky_streak",
 	joker_key = "j_wheeloffortune_lucky_streak",
+	incompatible_flags = { "haha", "random_morph" },
 	on_add = function(self)
 		WOF.default_on_add(self)
 	end,

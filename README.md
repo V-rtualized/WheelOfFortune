@@ -52,7 +52,7 @@ Several effects create eternal, negative jokers as visual indicators while the e
 | **We Are Rich**         | Every economy joker gives +$1 per payout for the rest of the ante                                                                   | Positive | Until end of ante       | Implemented |
 | **Master Thief**        | One random common joker from your opponent's setup appears for sale in your shop                                                    | Positive | Instant                 | Implemented |
 | **Indigo Blessing**     | Select an additional card from all packs for the rest of the ante. Idea credit to ЗАХАРОСАН                                         | Positive | Until end of ante       | Implemented |
-| **Lucky Streak**        | Every hand played has a 1 in 5 chance to be played a second time until the end of the ante                                          | Positive | Until end of ante       | Implemented |
+| **Lucky Streak**        | Every hand played has a 1 in 5 chance to be played a second time until the end of the ante. Cannot appear while Haha or RandomMorph is active | Positive | Until end of ante       | Implemented |
 | **Economic Boom**       | At the end of the ante, receive 10% of all money spent after the effect was activated                                               | Positive | Until end of ante       | Implemented |
 | **Foil Factory**        | Among the next 5 shop Jokers, any without an edition are given Foil                                                                 | Positive | Next 5 jokers generated | Implemented |
 | **Tarot God**           | Gain +1 consumable slot for the rest of the ante                                                                                    | Positive | Until end of ante       | Implemented |
@@ -91,7 +91,7 @@ Several effects create eternal, negative jokers as visual indicators while the e
 | **Vampire Dream**      | Every played card gains a random enhancement (excluding Glass)                                                                       | Chaos | Until end of ante      | Implemented |
 | **Lucky Day**          | All 7s in both players' decks become Lucky 7s with the Oops! All 6s effect                                                           | Chaos | Until end of ante      | Implemented |
 | **Royal Glass**        | Playing a Royal Straight Flush rewards a Justice Tarot card                                                                          | Chaos | Until end of ante      | Implemented |
-| **Ov6rf7ow**           | Adds the same 67 random cards to both decks; each card has a 35% enhancement, 8% edition, and 12% seal chance                       | Chaos | Instant                | Implemented |
+| **Ov6rf7ow**           | Adds the same 67 random cards to both decks for the ante; afterward, every card except 6s and 7s is destroyed                       | Chaos | Until end of ante      | Implemented |
 | **Blissful Ignorance** | During the next PvP, your opponent's exact score is hidden. You can only see whether you have higher or lower score                  | Chaos | Until end of ante      | Implemented |
 | **RandomMorph**        | Every hand played has a 50/50 to either destroy or copy all scored cards                                                             | Chaos | Until end of ante      | Implemented |
 | **Resource Drain**     | Hands and discards are not restored between blinds for the rest of the ante; at least 1 hand is preserved                           | Chaos | Until end of ante      | Implemented |
